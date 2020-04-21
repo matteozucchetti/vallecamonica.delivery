@@ -83,13 +83,18 @@ export default class Home extends Component {
 				<div class="text-center w-full">
 					<p class="mb-5">
 						Developed with ❤️ by
-						<a class="text-orange-500" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>
+						<a class="text-orange-500" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}, special thanks to Matteo Bernardi</a>
 					</p>
-					<a href="https://github.com/tomma5o/domicilioBoilerplate"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="mb-5 text-xs block text-gray-500 hover:underline"
-					>Se vuoi crearlo per la tua città visita la pagina GitHub del progetto</a>
+          <a href="https://www.instagram.com/vallecamonica_delivery/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mb-5 text-xs block hover:underline"
+          >Visita la nostra pagina Instagram</a>
+          <a href="https://github.com/tomma5o/domicilioBoilerplate"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mb-5 text-xs block text-gray-500 hover:underline"
+          >Se vuoi crearlo per la tua città visita la pagina GitHub del progetto</a>
 				</div>
 			</Fragment>
 		);
