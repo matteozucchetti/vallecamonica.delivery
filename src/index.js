@@ -74,10 +74,7 @@ export default class App extends Component {
 						}
 					</nav>
 					<h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">
-						<span class="block sm:inline-block" role="img" aria-label="biker">
-							🚴
-						</span>
-						{`${process.env.PREACT_APP_CITY} a Domicilio`}
+						{`${process.env.PREACT_APP_CITY}`}
 					</h1>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
