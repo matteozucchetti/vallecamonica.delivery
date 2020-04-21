@@ -40,7 +40,7 @@ body {
 	border-radius: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
 	:root {
 		--bg: #1a212d;
 		--gray-200: #272f3d;
@@ -55,4 +55,4 @@ body {
 	.backdrop {
 		background-color: rgba(26, 33, 45, 0.8);
 	}
-}
+}*/
