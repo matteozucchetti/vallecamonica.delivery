@@ -1,9 +1,9 @@
 export default function Form() {
 	return (
 		<div>
-			<form name="VallecamonicaDeliveryForm" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
+			<form name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
 				<p>
-					<input type="hidden" name="form-name" value="VallecamonicaDeliveryForm" />
+					<input type="hidden" name="form-name" value="contact" />
 				</p>
 				<p class="my-5">
 					<label class="lock text-gray-800 ml-2 font-bold md:text-right mb-1 md:mb-0 pr-4">Nome
