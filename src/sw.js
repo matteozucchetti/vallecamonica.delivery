@@ -9,7 +9,7 @@ const isNav = (event) => event.request.mode === "navigate";
 */
 
 const useLastCachedResponse = ({ cacheName, cachedResponse }) => {
-	console.log("ciccio")
+	// console.log("ciccio")
 	// If there's already a match against the request URL, return it.
 	if (cachedResponse) {
 		return cachedResponse;
