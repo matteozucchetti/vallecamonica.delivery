@@ -55,27 +55,27 @@ export default function Form() {
             <label class="">In quali giorni è attivo il servizio?
               <div class="md:text-right mb-1 md:mb-0 pr-4 flex align-center items-center flex-wrap">
                 <label>Lun
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Lun" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Lun" />
                 </label>
                 <label>Mar
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Mar" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Mar" />
                 </label>
                 <label>Mer
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Mer" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Mer" />
                 </label>
                 <label>Gio
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Gio" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Gio" />
                 </label>
               </div>
               <div class="md:text-right mb-1 md:mb-0 pr-4 flex align-center items-center flex-wrap">
                 <label>Ven
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Ven" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Ven" />
                 </label>
                 <label>Sab
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Sab" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Sab" />
                 </label>
                 <label>Dom
-                  <input class="ml-2 mr-5" type="checkbox" name="delivery day" value="Dom" />
+                  <input class="ml-2 mr-5" type="checkbox" name="delivery day - Dom" />
                 </label>
               </div>
             </label>
