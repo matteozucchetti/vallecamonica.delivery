@@ -40,6 +40,10 @@ body {
 	border-radius: 20px;
 }
 
+button, [role="button"]{
+  outline: none !important;
+}
+
 /*@media (prefers-color-scheme: dark) {
 	:root {
 		--bg: #1a212d;
@@ -57,7 +61,4 @@ body {
 	}
 }*/
 
-
-.iubenda-ibadge{
-  margin: 0 auto;
-}
+@import "iubenda";

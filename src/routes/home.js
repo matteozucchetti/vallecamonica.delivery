@@ -53,7 +53,7 @@ export default class Home extends Component {
 						onInput={this.handleChangeFilter}
 					/>
 				</div>
-				<div class="relative flex overflow-x-scroll text-center mt-2 pb-5">
+				<div class="relative flex overflow-x-scroll lg:overflow-x-hidden lg:flex-wrap lg:justify-center text-center mt-2 pb-5">
 					{Object.keys(stores).map(key => (
 						<button
 							onClick={this.handleCategoryFilter(key)}

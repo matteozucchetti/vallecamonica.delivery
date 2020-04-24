@@ -65,12 +65,12 @@ export default class App extends Component {
 	render(props, { isHomepage, results, popupData, isPopupOpen }) {
 		return (
 			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
-				<div id="app" class="px-5 max-w-screen-md mx-auto">
+				<div id="app" class="px-5 max-w-screen-lg mx-auto pb-10">
 					<nav class="flex justify-center md:justify-end items-center">
 						{
 							isHomepage
 								? <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold px-2 py-1 rounded" href="/form">➕ Aggiungi un'attività</Link>
-								: <Link class="m-5 text-blue-500 hover:text-blue-800" href="/">Ritorna alla ricerca</Link>
+								: <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold px-2 py-1 rounded" href="/">Ritorna alla ricerca</Link>
 						}
 					</nav>
 					<h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">

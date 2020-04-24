@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow: 
 
-Sitemap: https://domanihere.it/sitemap.xml
+Sitemap: https://vallecamonicadelivery.netlify.app/sitemap.xml
