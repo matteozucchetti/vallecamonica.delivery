@@ -1,5 +1,8 @@
 module.exports = {
 	theme: {
+    fontFamily: {
+      'sans': ['Open Sans', 'Arial', 'sans-serif']
+    },
 		colors: {
 			white: 'var(--bg)',
 			gray: {

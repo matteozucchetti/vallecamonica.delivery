@@ -4,15 +4,15 @@ import { useContext } from 'preact/hooks';
 import { Action } from '../index'
 
 export const ListItem = (props) => {
-	const { name, tel, site, mail, payments, services, note, newEntry } = props;
+	const { name, tel, site, mail, payments, services, note, where, newEntry } = props;
 
 	const action = useContext(Action);
 	const encodedName = encodeURIComponent(name);
 	// const encodedCity = encodeURIComponent(process.env.PREACT_APP_CITY);
   const encodedCity = encodeURIComponent('Valle Camonica');
-	const searchUrl = `https://www.google.com/search?q=${encodedName}%20${encodedCity}`;
+	const searchUrl = `https://www.google.com/search?q=${encodedName}`;
 
-	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note);
+	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));
 
 	return (
 		<article class={`relative rounded-lg border border-gray-500 bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700 ${newEntry ? "new-entry" : ""}`}>

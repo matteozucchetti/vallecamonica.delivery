@@ -4,6 +4,9 @@ import { Link } from 'preact-router/match';
 
 import './assets/styles/global.css';
 
+// Fonts
+require("typeface-open-sans")
+
 // Routes
 import Home from './routes/home.js';
 import Form from './routes/form.js';
@@ -69,8 +72,8 @@ export default class App extends Component {
 					<nav class="flex justify-center md:justify-end items-center">
 						{
 							isHomepage
-								? <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold px-2 py-1 rounded" href="/form">➕ Aggiungi un'attività</Link>
-								: <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white font-bold px-2 py-1 rounded" href="/">Torna indietro</Link>
+								? <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white px-2 py-1 rounded" href="/form">➕ Aggiungi un'attività</Link>
+								: <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white px-2 py-1 rounded" href="/">Torna indietro</Link>
 						}
 					</nav>					
 					<Router onChange={this.handleRoute}>

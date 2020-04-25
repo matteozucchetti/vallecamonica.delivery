@@ -5,7 +5,7 @@ import { ListCategory } from '../components/listCategory';
 export default class Home extends Component {
 	state = {
 		filter: '',
-		categoryFilter: null
+		cityFilter: null
 	};
 
 	handleChangeFilter = e => {
@@ -13,53 +13,54 @@ export default class Home extends Component {
 		this.setState({ filter: text });
 	};
 
-	handleCategoryFilter = key => _ => { // eslint-disable-line no-unused-vars
-      if (key === this.state.categoryFilter) {
-         return this.setState({ categoryFilter: null });
+	handleCityFilter = key => _ => { // eslint-disable-line no-unused-vars
+      if (key === this.state.cityFilter) {
+         return this.setState({ cityFilter: null });
       }
-      this.setState({ categoryFilter: key });
+      this.setState({ cityFilter: key });
    };
 
-	filteredCategories(filter, categoryFilter) {
+	filteredCategories(filter, cityFilter) {
 		const { results } = this.props;
 		const regex = new RegExp(`${filter}`, 'i');
 
 		return Object.keys(results)
-			.filter(key => (categoryFilter ? categoryFilter === key : true))
+			.filter(key => (cityFilter ? cityFilter === key : true))
 			.reduce((acc, key) => {
 				return (
 					{
 						...acc,
 						[key]: {
 							icon: results[key].icon,
-							data: results[key].data.filter(e => (filter.length ? regex.test(e.name) : true))
+							data: results[key].data.filter(e => (filter.length ? regex.test(e.where) || regex.test(e.name) : true))
 						}
 					}
 				);
 			}, {});
 	}
 
-	render(props, { filter, categoryFilter }) {
+	render(props, { filter, cityFilter }) {
 		const { results: stores } = props;
-		const filteredStores = this.filteredCategories(filter, categoryFilter)
+		const filteredStores = this.filteredCategories(filter, cityFilter)
 
 		return (
 			<Fragment>
-        <h1 class="font-sans text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
-				<div class="relative p-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto pb-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
+				<div class="relative py-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto">
 					<input
 						class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
 						type="text"
-						placeholder="Cerca Attività"
+						placeholder="Scrivi qui il tuo paese o il nome dell'attività"
 						onInput={this.handleChangeFilter}
 					/>
 				</div>
-				<div class="relative flex overflow-x-scroll lg:overflow-x-hidden lg:flex-wrap lg:justify-center text-center mt-2 pb-5">
+        <p class="pb-2">Oppure filtra per categoria:</p>
+				<div class="relative pb-5 flex overflow-x-scroll lg:overflow-x-hidden lg:flex-wrap">
 					{Object.keys(stores).map(key => (
 						<button
-							onClick={this.handleCategoryFilter(key)}
-							class={`m-1 flex-grow-0 flex-shrink-0 items-center border border-blue-500 py-2 px-4 rounded-full ${
-								key === categoryFilter
+							onClick={this.handleCityFilter(key)}
+							class={`mr-2 flex-grow-0 flex-shrink-0 items-center border border-blue-500 py-2 px-4 rounded-lg ${
+								key === cityFilter
 									? "bg-blue-500 hover:bg-blue-500 text-white outline-none text-white"
 									: "bg-white hover:bg-blue-500 hover:text-white"
 							}`}
@@ -68,7 +69,7 @@ export default class Home extends Component {
 						</button>
 					))}
 				</div>
-				<div class="relative mb-10 font-sans text-md text-gray-800">
+				<div class="relative mb-10 text-md text-gray-800">
 					{
 						Object.keys(filteredStores)
 							.filter(key => filteredStores[key].data.length)
@@ -96,7 +97,10 @@ export default class Home extends Component {
             rel="noopener noreferrer"
             class="mb-5 text-xs block text-gray-500 hover:underline"
           >Se vuoi crearlo per la tua città visita la pagina GitHub del progetto</a>
-          <a href="https://www.iubenda.com/privacy-policy/24435749" class="iubenda-white iubenda-embed" title="Privacy Policy ">Privacy Policy</a>
+          <p class="mb-5">
+            <a href="https://www.iubenda.com/privacy-policy/24435749" class="iubenda-white iubenda-embed" title="Privacy Policy ">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/24435749" class="iubenda-white iubenda-embed" title="Cookie Policy ">Cookie Policy</a>
+          </p>
 				</div>
 			</Fragment>
 		);

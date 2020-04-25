@@ -3,6 +3,7 @@ import { D_Contacts } from './dialog_contacts';
 import { D_Services } from './dialog_services';
 import { D_Payments } from './dialog_payments';
 import { D_Notes } from './dialog_notes';
+import { D_Where } from './dialog_where';
 
 export const Dialog = ({
 	isOpen,
@@ -13,6 +14,7 @@ export const Dialog = ({
 	site,
 	services,
 	payments,
+  where,
 	note
 }) => {
 	return (
@@ -33,6 +35,7 @@ export const Dialog = ({
 						onClick={closePopup}
 					>✖️</span>
 				</div>
+        {where && <D_Where {...{where}} />}
 				{note && <D_Notes {...{note}} />}
 				<D_Contacts {...{tel, mail, site}} />
 				{payments && <D_Payments {...{payments}} />}
