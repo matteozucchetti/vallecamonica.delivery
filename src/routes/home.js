@@ -5,7 +5,7 @@ import { ListCategory } from '../components/listCategory';
 export default class Home extends Component {
 	state = {
 		filter: '',
-		cityFilter: null
+		cityOrNameFilter: null
 	};
 
 	handleChangeFilter = e => {
@@ -13,19 +13,19 @@ export default class Home extends Component {
 		this.setState({ filter: text });
 	};
 
-	handleCityFilter = key => _ => { // eslint-disable-line no-unused-vars
-      if (key === this.state.cityFilter) {
-         return this.setState({ cityFilter: null });
+	handleFilter = key => _ => { // eslint-disable-line no-unused-vars
+      if (key === this.state.cityOrNameFilter) {
+         return this.setState({ cityOrNameFilter: null });
       }
-      this.setState({ cityFilter: key });
+      this.setState({ cityOrNameFilter: key });
    };
 
-	filteredCategories(filter, cityFilter) {
+	filteredCategories(filter, cityOrNameFilter) {
 		const { results } = this.props;
 		const regex = new RegExp(`${filter}`, 'i');
 
 		return Object.keys(results)
-			.filter(key => (cityFilter ? cityFilter === key : true))
+			.filter(key => (cityOrNameFilter ? cityOrNameFilter === key : true))
 			.reduce((acc, key) => {
 				return (
 					{
@@ -39,9 +39,9 @@ export default class Home extends Component {
 			}, {});
 	}
 
-	render(props, { filter, cityFilter }) {
+	render(props, { filter, cityOrNameFilter }) {
 		const { results: stores } = props;
-		const filteredStores = this.filteredCategories(filter, cityFilter)
+		const filteredStores = this.filteredCategories(filter, cityOrNameFilter)
 
 		return (
 			<Fragment>
@@ -58,9 +58,9 @@ export default class Home extends Component {
 				<div class="relative pb-5 flex overflow-x-scroll lg:overflow-x-hidden lg:flex-wrap">
 					{Object.keys(stores).map(key => (
 						<button
-							onClick={this.handleCityFilter(key)}
+							onClick={this.handleFilter(key)}
 							class={`mr-2 flex-grow-0 flex-shrink-0 items-center border border-blue-500 py-2 px-4 rounded-lg ${
-								key === cityFilter
+								key === cityOrNameFilter
 									? "bg-blue-500 hover:bg-blue-500 text-white outline-none text-white"
 									: "bg-white hover:bg-blue-500 hover:text-white"
 							}`}

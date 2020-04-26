@@ -4,6 +4,9 @@ import { Link } from 'preact-router/match';
 
 import './assets/styles/global.css';
 
+// Lodash
+let _ = require('lodash');
+
 // Fonts
 require("typeface-open-sans")
 
