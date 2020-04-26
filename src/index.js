@@ -8,12 +8,13 @@ import './assets/styles/global.css';
 require("typeface-open-sans")
 
 // Routes
-import Home from './routes/home.js';
-import Form from './routes/form.js';
+import Home from './routes/home';
+import Form from './routes/form';
 import FormSuccess from './routes/formSuccess';
 
 // Components
-import { Dialog } from './components/dialog.js';
+import Footer from './components/footer';
+import { Dialog } from './components/dialog';
 import { PWAPrompt } from './components/pwaPrompt';
 
 export const Action = createContext({})
@@ -82,6 +83,7 @@ export default class App extends Component {
 						<FormSuccess path="/form/success" />
 					</Router>
 				</div>
+        <Footer></Footer>
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>
