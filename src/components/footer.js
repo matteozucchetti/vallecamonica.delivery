@@ -29,8 +29,8 @@ export default class Footer extends Component {
             class="mb-5 text-xs block text-gray-500 hover:underline"
           >Se vuoi crearlo per la tua città visita la pagina GitHub del progetto</a>
           <p class="text-center">
-            <a href="https://www.iubenda.com/privacy-policy/24435749" class="iubenda-white iubenda-embed" title="Privacy Policy ">Privacy Policy</a>
-            <a href="https://www.iubenda.com/privacy-policy/24435749" class="iubenda-white iubenda-embed" title="Cookie Policy ">Cookie Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/19385130" class="iubenda-white iubenda-embed" title="Privacy Policy ">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/19385130/cookie-policy" class="iubenda-white iubenda-embed" title="Cookie Policy ">Cookie Policy</a>
           </p>
         </div>      
       </Fragment>
