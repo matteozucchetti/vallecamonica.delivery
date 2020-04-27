@@ -1,4 +1,5 @@
 User-Agent: *
-Disallow: 
+Disallow: /form
+Disallow: /form/success
 
 Sitemap: https://vallecamonica.delivery/sitemap.xml
