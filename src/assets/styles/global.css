@@ -2,5 +2,6 @@
 @import "tailwindcss/utilities";
 @import "general.scss";
 
-@import "popup.scss";
+@import "typography.scss";
+@import "dialog.scss";
 @import "iubenda.scss";

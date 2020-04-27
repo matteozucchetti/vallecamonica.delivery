@@ -16,8 +16,8 @@ export const D_When = ({when}) => {
             ) : (
               activeDaysArr.map((value, index) => {
                 return ( index === length - 1
-                  ? <span class="day" key={index}>{value}</span>
-                  : <span class="day" key={index}>{value}, </span>                
+                  ? <span class="capitalize" key={index}>{value}</span>
+                  : <span class="capitalize" key={index}>{value}, </span>                
                 )
               })
             )}

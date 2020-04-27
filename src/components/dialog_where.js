@@ -12,8 +12,8 @@ export const D_Where = ({where}) => {
             {
               where.map((value, index) => {
               return ( index === length - 1
-                ? <span class="city" key={index}>{value}</span>
-                : <span class="city" key={index}>{value}, </span>                
+                ? <span class="capitalize" key={index}>{value}</span>
+                : <span class="capitalize" key={index}>{value}, </span>                
               )
             })
             }

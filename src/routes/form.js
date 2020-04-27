@@ -1,7 +1,8 @@
 export default function Form() {
 	return (
 		<div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl pt-5 md:pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
+      <h1>{`${process.env.PREACT_APP_CITY}`}</h1>
+      <h2>Compila il form qui sotto per inviare la richiesta e aggiungere la tua attività in modo gratuito:</h2>
 			<form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
 				<p>
 					<input type="hidden" name="form-name" value="contact" />

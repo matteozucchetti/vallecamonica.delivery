@@ -45,7 +45,8 @@ export default class Home extends Component {
 
 		return (
 			<Fragment>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl pt-5 md:pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
+        <h1 class="">{`${process.env.PREACT_APP_CITY}`}</h1>
+        <h2>Tutte le attività che effettuano consegne a domicilio in Valle Camonica. Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>
 				<div class="relative py-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto">
 					<input
 						class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base"
