@@ -1,7 +1,7 @@
 export default function Form() {
 	return (
 		<div>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl pt-5 md:pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
 			<form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
 				<p>
 					<input type="hidden" name="form-name" value="contact" />
@@ -113,7 +113,7 @@ export default function Form() {
         <div class="flex flex-wrap">
 
           <div class="w-full md:w-1/4 ml-auto px-2 mb-5">
-            <button class="block w-full bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">Invia la richiesta</button>
+            <button class="block w-full bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">Invia la richiesta</button>
           </div>
 
         </div>

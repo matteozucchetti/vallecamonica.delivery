@@ -15,15 +15,12 @@ export const ListItem = (props) => {
 	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));
 
 	return (
-		<article class={`relative rounded-lg border border-gray-500 bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700 ${newEntry ? "new-entry" : ""}`}>
+		<article onClick={(e) => action.setPopupNumbers(e, props)} class={`relative cursor-pointer rounded-md border border-gray-500 bg-gray-200 p-4 md:p-5 my-5 text-md lg:text-xl font-semibold text-gray-700 ${newEntry ? "new-entry" : ""}`}>
 			<div class="flex justify-between items-center">
-				<span>
-					<a class="hover:underline" href={searchUrl} target="_blank" rel="noopener noreferrer">{name}</a>
-				</span>
+				<span>{name}</span>				
 				<div class="flex">
 					{isInfoVisible && 
 						<span
-							onClick={(e) => action.setPopupNumbers(e, props)}
 							class="inline-block mx-1 md:mx-2 w-8 h-8 cursor-pointer text-center leading-8 bg-blue-300 rounded-lg"
 							role="img"
 							aria-label="more info"

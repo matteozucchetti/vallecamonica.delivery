@@ -1,7 +1,7 @@
 export default function FormSuccess() {
 	return (
 		<div class="text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl pt-5 md:pt-10 text-gray-800 text-center capitalize">{`${process.env.PREACT_APP_CITY}`}</h1>
 			<p class="mt-10 text-2xl">Grazie per aver aggiunto l'attività!</p>
 			<p class="mt-5">
 				Abbiamo preso in carico la tua richiesta, normalmente la fase di approvazione richiede 24 ore.<br />

@@ -70,11 +70,11 @@ const Prompt = ({visible, closePopup}) => (
 		<p class="border-b border-gray-500 py-4 px-2">Aggiungimi alla Home per utilizzarmi in fullscreen e offline. Così appena vorrai ordinare mi avrai a portata di tap!</p>
 		<div class="flex items-center text-blue-700 px-2 my-4">
 			<ShareIcon classes="fill-current" size="20px" />
-			<p class="text-gray-900 px-2">Fai tap sul bottone condividi</p>
+			<p class="px-2">Fai tap sul bottone condividi</p>
 		</div>
 		<div class="flex items-center text-blue-700 px-2 mb-2">
 			<HomeScreenIcon classes="fill-current" size="20px" />
-			<p class="text-gray-900 px-2 ">Fai tap sulla voce 'Aggiungi a Home'</p>
+			<p class="px-2 ">Fai tap sulla voce 'Aggiungi a Home'</p>
 		</div>
 	</div>
 );

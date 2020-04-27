@@ -45,7 +45,7 @@ export const D_Contacts = ({tel, mail, site}) => {
 						>
 						🌐
 						</span>
-						<a href={site} class="inline-block rounded-lg text-sm font-semibold text-gray-700">
+						<a href={site} target="_blank" class="inline-block rounded-lg text-sm font-semibold text-gray-700">
 							<span>{cleanUrls(site)}</span>
 						</a>
 					</p>
