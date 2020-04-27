@@ -8,12 +8,12 @@ function Tel({tel}) {
 
 	return ( isArrayOfTel
 		? tel.map((telNumber, i) => (
-			<a href={`tel:${telNumber}`} class="inline-block rounded-lg text-sm font-semibold text-gray-700">
+			<a href={`tel:${telNumber}`} class="inline-block rounded-lg text-sm">
 				<span>{telNumber}</span>
 				{tel.length !== i+1 && <span class="mx-2">-</span>}
 			</a>
 		))
-		: <a href={`tel:${tel}`} class="inline-block rounded-lg text-sm font-semibold text-gray-700">
+		: <a href={`tel:${tel}`} class="inline-block rounded-lg text-sm">
 			{tel}
 		</a>
 	);
@@ -22,12 +22,12 @@ function Tel({tel}) {
 export const D_Contacts = ({tel, mail, site}) => {
 	return (
 		<Fragment>
-			<h3 class="text-lg font-bold mb-2">Contatti</h3>
+			<h3 class="text-lg font-bold mb-2">Contatti:</h3>
 			<div class="mb-5">
 				{tel && (
 					<p class="mb-2">
 						<span
-							class="inline-block mr-2 w-6 h-6 bg-green-300 text-xs text-center leading-6 rounded-lg cursor-pointer"
+							class="inline-block mr-2 w-6 h-6 bg-teal-500 text-xs text-center leading-6 cursor-pointer"
 							role="img"
 							aria-label="telephone"
 						>
@@ -39,13 +39,13 @@ export const D_Contacts = ({tel, mail, site}) => {
 				{site && (
 					<p class="mb-2">
 						<span
-							class="inline-block mr-2 w-6 h-6 bg-orange-300 text-xs text-center leading-6 rounded-lg cursor-pointer"
+							class="inline-block mr-2 w-6 h-6 bg-orange-300 text-xs text-center leading-6 cursor-pointer"
 							role="img"
 							aria-label="see the site"
 						>
 						🌐
 						</span>
-						<a href={site} target="_blank" class="inline-block rounded-lg text-sm font-semibold text-gray-700">
+						<a href={site} target="_blank" class="inline-block rounded-lg text-sm">
 							<span>{cleanUrls(site)}</span>
 						</a>
 					</p>
@@ -53,13 +53,13 @@ export const D_Contacts = ({tel, mail, site}) => {
 				{mail && (
 					<p class="mb-2">
 						<span
-							class="inline-block mr-2 w-6 h-6 bg-blue-300 text-xs text-center leading-6 rounded-lg cursor-pointer"
+							class="inline-block mr-2 w-6 h-6 bg-blue-300 text-xs text-center leading-6 cursor-pointer"
 							role="img"
 							aria-label="send mail"
 						>
 						✉️
 						</span>
-						<a href={`mailto:${mail}`} class="inline-block rounded-lg text-sm font-semibold text-gray-700">
+						<a href={`mailto:${mail}`} class="inline-block rounded-lg text-sm">
 							<span>{mail}</span>
 						</a>
 					</p>

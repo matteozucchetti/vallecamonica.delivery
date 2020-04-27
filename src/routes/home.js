@@ -49,28 +49,28 @@ export default class Home extends Component {
         <h2>Tutte le attività che effettuano consegne a domicilio in Valle Camonica. Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>
 				<div class="relative py-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto">
 					<input
-						class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-lg py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base"
+						class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base"
 						type="text"
 						placeholder="Nome del tuo paese o nome dell'attività"
 						onInput={this.handleChangeFilter}
 					/>
 				</div>
-        <p class="pb-2 text-xs sm:text-base">Oppure filtra per categoria:</p>
+        <p class="pb-2">Oppure filtra per categoria:</p>
 				<div class="relative pb-5 flex overflow-x-scroll lg:overflow-x-hidden lg:flex-wrap">
 					{Object.keys(stores).map(key => (
 						<button
 							onClick={this.handleFilter(key)}
-							class={`mr-2 flex-grow-0 flex-shrink-0 items-center border border-blue-500 py-2 px-4 rounded-md ${
+							class={`mr-2 flex-grow-0 flex-shrink-0 items-center border border-teal-500 py-2 px-4 ${
 								key === cityOrNameFilter
-									? "bg-blue-500 hover:bg-blue-500 text-white outline-none text-white"
-									: "bg-white hover:bg-blue-500 hover:text-white"
+									? "bg-teal-500 hover:bg-teal-500 text-white"
+									: "bg-white hover:bg-teal-500 hover:text-white"
 							}`}
 						>
 							<span>{`${stores[key].icon} ${key}`}</span>
 						</button>
 					))}
 				</div>
-				<div class="relative mb-10 text-md text-gray-800">
+				<div class="relative mb-10 text-md">
 					{
             (Object.keys(filteredStores).filter(key => filteredStores[key].data.length).length > 0
               ? Object.keys(filteredStores)

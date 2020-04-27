@@ -26,16 +26,16 @@ export const Dialog = ({
 			onClick={closePopup}
 		>
 			<div
-				class="absolute w-5/6 max-w-screen-md bg-white rounded-lg p-6 shadow-lg border border-gray-700"
+				class="absolute w-5/6 max-w-screen-md bg-white p-6 shadow-lg"
 				style={{top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}
 			>
 				<div class="flex justify-between">
 					<h1 class="text-2xl mb-5 font-bold flex-1">{name}</h1>
 					<span
-						class="bg-red-300 rounded-full text-center cursor-pointer"
+						class="bg-teal-500 text-center cursor-pointer text-white"
 						style={{ width: '30px', height: '30px', lineHeight: '30px' }}
 						onClick={closePopup}
-					>✖️</span>
+					>X</span>
 				</div>
         {where && <D_Where {...{where}} />}
         {when && <D_When {...{when}} />}

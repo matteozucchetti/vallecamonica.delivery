@@ -2,11 +2,6 @@ import { h, Component, createContext } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
 
-// Fonts
-// require("typeface-open-sans")
-
-
-
 import './assets/styles/global.css';
 
 // Lodash
@@ -18,6 +13,7 @@ import Form from './routes/form';
 import FormSuccess from './routes/formSuccess';
 
 // Components
+import Header from './components/header';
 import Footer from './components/footer';
 import { Dialog } from './components/dialog';
 import { PWAPrompt } from './components/pwaPrompt';
@@ -74,21 +70,22 @@ export default class App extends Component {
 	render(props, { isHomepage, results, popupData, isPopupOpen }) {
 		return (
 			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
-				<div id="app" class="px-5 max-w-screen-lg mx-auto pb-10">
-					<nav class="flex justify-center md:justify-end items-center">
-						{
-							isHomepage
-								? <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white px-2 py-1 rounded" href="/form">➕ Aggiungi un'attività</Link>
-								: <Link class="m-5 bg-blue-500 inline-block hover:bg-blue-700 text-white px-2 py-1 rounded" href="/">Torna indietro</Link>
-						}
-					</nav>					
+				<div id="app" class="px-5 py-5 max-w-screen-lg mx-auto">
+          {/*<Header />*/}
+					<div class="flex justify-center md:justify-end items-center">
+            {
+              isHomepage
+                ? <Link class="myButton" href="/form">Aggiungi un'attività</Link>
+                : <Link class="myButton" href="/">Torna indietro</Link>
+            }
+          </div> 
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
 						<Form path="/form" />
 						<FormSuccess path="/form/success" />
 					</Router>
+          <Footer />
 				</div>
-        <Footer></Footer>
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>

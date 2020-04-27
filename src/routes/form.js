@@ -13,13 +13,13 @@ export default function Form() {
 
           <div class="w-full md:w-1/2 px-2 mb-5">
             <label class="">Nome
-              <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-md py-2 px-4 block w-full appearance-none leading-normal" required type="text" name="name" />
+              <input class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base" required type="text" name="name" />
             </label>
           </div>
 
           <div class="w-full md:w-1/2 px-2 mb-5">
             <label class="">Numero di telefono
-              <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-md py-2 px-4 block w-full appearance-none leading-normal" type="text" inputmode="numeric" name="telephone" />
+              <input class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base" type="text" inputmode="numeric" name="telephone" />
             </label>
           </div>
 
@@ -29,13 +29,13 @@ export default function Form() {
 
           <div class="w-full md:w-1/2 px-2 mb-5">
             <label class="">Email
-              <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-md py-2 px-4 block w-full appearance-none leading-normal" required type="text" name="mail" />
+              <input class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base" required type="text" name="mail" />
             </label>
           </div>
 
           <div class="w-full md:w-1/2 px-2 mb-5">
             <label class="">Sito Web
-              <input class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-md py-2 px-4 block w-full appearance-none leading-normal" type="text" name="site" />
+              <input class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base" type="text" name="site" />
             </label>
           </div>
 
@@ -45,7 +45,7 @@ export default function Form() {
 
           <div class="w-full px-2 mb-5">
             <label class="">Dove consegni? (specifica qui i comuni in cui puoi effettuare le consegne)
-              <textarea class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-md py-2 px-4 block w-full appearance-none leading-normal" required type="text" name="delivery_city" />
+              <textarea class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base" required type="text" name="delivery_city" />
             </label>
           </div>
 
@@ -105,7 +105,7 @@ export default function Form() {
 
           <div class="w-full px-2 mb-5">
             <label class="">Note
-              <textarea class="bg-white focus:outline-none focus:shadow-outline border border-gray-500 rounded-md py-2 px-4 block w-full appearance-none leading-normal" type="text" name="note" />
+              <textarea class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base" type="text" name="note" />
             </label>
           </div>
 
@@ -114,7 +114,7 @@ export default function Form() {
         <div class="flex flex-wrap">
 
           <div class="w-full md:w-1/4 ml-auto px-2 mb-5">
-            <button class="block w-full bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">Invia la richiesta</button>
+            <button class="myButton block ml-auto mr-0" type="submit">Invia la richiesta</button>
           </div>
 
         </div>
