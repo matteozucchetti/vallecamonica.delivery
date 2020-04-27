@@ -2,6 +2,7 @@
 @import "tailwindcss/utilities";
 @import "general.scss";
 
+@import "fonts.scss";
 @import "typography.scss";
 @import "dialog.scss";
 @import "iubenda.scss";

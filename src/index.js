@@ -2,13 +2,15 @@ import { h, Component, createContext } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
 
+// Fonts
+// require("typeface-open-sans")
+
+
+
 import './assets/styles/global.css';
 
 // Lodash
 let _ = require('lodash');
-
-// Fonts
-require("typeface-open-sans")
 
 // Routes
 import Home from './routes/home';

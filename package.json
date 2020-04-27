@@ -42,7 +42,6 @@
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
-    "react-ios-pwa-prompt": "^1.7.0",
-    "typeface-open-sans": "0.0.75"
+    "react-ios-pwa-prompt": "^1.7.0"
   }
 }

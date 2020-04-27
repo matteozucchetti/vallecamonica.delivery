@@ -1,7 +1,7 @@
 module.exports = {
 	theme: {
     fontFamily: {
-      'sans': ['Open Sans', 'Arial', 'sans-serif']
+      'sans': ['Open Sans', 'Courier', 'sans-serif']
     },
 		colors: {
 			white: 'var(--bg)',
