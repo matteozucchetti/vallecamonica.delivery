@@ -1,7 +1,7 @@
 module.exports = {
 	theme: {
     fontFamily: {
-      'sans': ['Open Sans', 'Courier', 'sans-serif']
+      'vcd': ['Open Sans', 'Courier', 'sans-serif']
     },
     extend: {
       colors: {

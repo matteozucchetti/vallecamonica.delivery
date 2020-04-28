@@ -13,7 +13,6 @@ import Form from './routes/form';
 import FormSuccess from './routes/formSuccess';
 
 // Components
-import Header from './components/header';
 import Footer from './components/footer';
 import { Dialog } from './components/dialog';
 import { PWAPrompt } from './components/pwaPrompt';
