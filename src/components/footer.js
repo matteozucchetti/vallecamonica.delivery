@@ -6,14 +6,14 @@ export default class Footer extends Component {
     const script = document.createElement("script");
     script.innerHTML = `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`;
     script.async = true;
-    const footer = document.getElementById('vcd-footer');
+    const footer = this.base;
     footer.appendChild(script);
   }
   
   render(){
     return (
       <Fragment>
-        <div class="px-5 max-w-screen-lg mx-auto text-center" id="vcd-footer">
+        <div class="px-5 max-w-screen-lg mx-auto text-center vcd-footer">
           <p class="mb-5">
             Developed with ❤️ by
             <a class="text-teal-500" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>, special thanks to Matteo Bernardi
