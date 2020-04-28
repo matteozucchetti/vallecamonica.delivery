@@ -13,7 +13,7 @@ export default class Footer extends Component {
   render(){
     return (
       <Fragment>
-        <div class="px-5 max-w-screen-lg mx-auto text-center vcd-footer">
+        <div class="px-5 max-w-screen-lg mx-auto text-center vcd-footer pb-10">
           <p class="mb-5">
             Developed with ❤️ by
             <a class="text-teal-500" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>, special thanks to Matteo Bernardi

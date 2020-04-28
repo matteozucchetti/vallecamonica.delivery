@@ -70,21 +70,20 @@ export default class App extends Component {
 		return (
 			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
 				<div id="app" class="px-5 py-5 max-w-screen-lg mx-auto">
-          {/*<Header />*/}
 					<div class="flex justify-center md:justify-end items-center">
             {
               isHomepage
                 ? <Link class="myButton" href="/form">Aggiungi un'attività</Link>
                 : <Link class="myButton" href="/">Torna indietro</Link>
             }
-          </div> 
+          </div>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
 						<Form path="/form" />
 						<FormSuccess path="/form/success" />
-					</Router>
-          <Footer />
+					</Router>       
 				</div>
+        <Footer />
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>
