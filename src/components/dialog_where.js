@@ -6,8 +6,8 @@ export const D_Where = ({where}) => {
 
 	return (
 		<Fragment>
-			<h3 class="text-lg font-bold mb-2">Consegna a:</h3>
-			<div class="where mb-5">
+			<h3 class="mt-4 mb-2">Consegna a:</h3>
+			<div class="mb-2">
          <p>
             {
               where.map((value, index) => {

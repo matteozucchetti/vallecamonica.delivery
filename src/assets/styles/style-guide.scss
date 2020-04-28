@@ -1,5 +1,6 @@
 h1 {
-  @apply text-4xl pt-5 capitalize;
+  @apply text-4xl pt-5 capitalize font-bold mb-5;
+  line-height: 1.2;
   
   @screen md {
     @apply text-5xl;
@@ -11,10 +12,16 @@ h1 {
   }
 }
 h2 {
-  @apply text-xl;
+  @apply text-xl font-bold;
+  line-height: 1.2;
 }
 h3 {
-  @apply text-lg;
+  @apply text-lg font-bold;
+  line-height: 1;
+}
+
+button{
+  outline: none !important;
 }
 
 .myButton{

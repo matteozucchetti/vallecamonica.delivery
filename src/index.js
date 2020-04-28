@@ -17,6 +17,10 @@ import Footer from './components/footer';
 import { Dialog } from './components/dialog';
 import { PWAPrompt } from './components/pwaPrompt';
 
+// Images
+import VcdLogo from './assets/svg/logo.svg';
+import VcdBadge from './assets/svg/badge.svg';
+
 export const Action = createContext({})
 
 export default class App extends Component {
@@ -70,7 +74,8 @@ export default class App extends Component {
 		return (
 			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
 				<div id="app" class="px-5 py-5 max-w-screen-lg mx-auto">
-					<div class="flex justify-center md:justify-end items-center">
+          <VcdLogo class="w-1/2 mx-auto mb-10 main-logo" />       
+					<div class="flex justify-center items-center">
             {
               isHomepage
                 ? <Link class="myButton" href="/form">Aggiungi un'attività</Link>

@@ -7,7 +7,7 @@ export const D_Services = ({services}) => {
 	
 	return (
 		<Fragment>
-			<h3 class="text-lg font-bold mb-2">Puoi trovarci anche su:</h3>
+			<h3 class="mt-4 mb-2">Puoi trovarci anche su:</h3>
 			<div>
 				{services.map((service) => {
 					const colors = getBrandColor(service);

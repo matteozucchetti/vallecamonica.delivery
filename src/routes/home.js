@@ -66,7 +66,7 @@ export default class Home extends Component {
 									: "bg-white hover:bg-teal-500 hover:text-white"
 							}`}
 						>
-							<span>{`${stores[key].icon} ${key}`}</span>
+							<span>{key}</span>
 						</button>
 					))}
 				</div>

@@ -8,8 +8,8 @@ export const D_When = ({when}) => {
 
 	return (
 		<Fragment>
-			<h3 class="text-lg font-bold mb-2">Giorni:</h3>
-			<div class="when mb-5">
+			<h3 class="mt-4 mb-2">Giorni:</h3>
+			<div class="mb-2">
         <p>
             {length === 7 ? (
                 <span class="day">Tutti i giorni</span>

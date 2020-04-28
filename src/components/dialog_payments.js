@@ -3,8 +3,8 @@ import { Fragment } from "preact";
 export const D_Payments = ({payments}) => {
 	return (
 		<Fragment>
-			<h3 class="text-lg font-bold mb-2">Metodi di pagamento:</h3>
-			<div class="mb-5">
+			<h3 class="mt-4 mb-2">Metodi di pagamento:</h3>
+			<div class="mb-2">
 				{payments.map((payment) => {
 					return (
 						<span

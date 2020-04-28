@@ -1,11 +1,14 @@
 module.exports = {
 	theme: {
     fontFamily: {
-      'vcd': ['Open Sans', 'Courier', 'sans-serif']
+      'vcd': ['Poppins', 'sans-serif']
     },
     extend: {
       colors: {
-        'regal-blue': '#243c5a',
+        'vcd-azzurro': '#4FD1C5',
+        'vcd-arancione': '#F2923E',
+        'vcd-rosa': '#EC6680',
+        'vcd-rosso': '#E83261',
       }
     }
 	}
