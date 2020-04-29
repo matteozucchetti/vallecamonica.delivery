@@ -1,7 +1,12 @@
+import { Router } from 'preact-router';
+import { Link } from 'preact-router/match';
+
 export default function Form() {
 	return (
 		<div>
-      <h1>{`${process.env.PREACT_APP_CITY}`}</h1>
+      <div class="flex justify-center items-center">
+        <Link class="myButton" href="/">Torna indietro</Link>
+      </div>
       <h2>Compila il form qui sotto per inviare la richiesta e aggiungere la tua attività in modo gratuito:</h2>
 			<form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
 				<p>

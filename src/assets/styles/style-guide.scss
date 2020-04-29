@@ -12,8 +12,8 @@ h1 {
   }
 }
 h2 {
-  @apply text-xl font-bold;
-  line-height: 1.2;
+  @apply text-xl;
+  line-height: 1.5;
 }
 h3 {
   @apply text-lg font-bold;
@@ -24,11 +24,31 @@ button{
   outline: none !important;
 }
 
-.myButton{
-  @apply bg-teal-500 text-white font-bold py-2 px-4 border-b-4  border-teal-900  rounded;
+input{
+  &:focus::placeholder{
+    color: transparent;
+  }
+  &::placeholder{
+    @apply font-normal;
+  }
+}
+
+.vcd-button{
+  @apply bg-vcd-azzurro text-white py-3 px-10 border-b-4 border-vcd-azzurro-scuro rounded;
   &:hover{
-    @apply border-b-2; 
-    @apply border-t-2;
-    @apply border-teal-500;
+    @apply border-b-2 border-t-2 border-vcd-azzurro;
+  }
+  &--rosa{
+    @apply bg-vcd-rosa text-white py-3 px-10 border-b-4 border-vcd-rosso rounded;
+    &:hover{
+      @apply border-b-2 border-t-2 border-vcd-rosa;
+    }
+  }
+}
+
+.vcd-category-button{
+  @apply bg-vcd-arancione text-white py-2 px-5 border border-white rounded;
+  &--pressed{
+    @apply bg-white text-vcd-arancione;
   }
 }

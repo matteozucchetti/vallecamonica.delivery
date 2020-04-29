@@ -1,11 +1,14 @@
 import { Component, Fragment } from 'preact';
+import { Router } from 'preact-router';
+import { Link } from 'preact-router/match';
+import Scrollchor from "preact-scrollchor"
 
 import { ListCategory } from '../components/listCategory';
 
 export default class Home extends Component {
 	state = {
 		filter: '',
-		cityOrNameFilter: null
+		categoryFilter: null
 	};
 
 	handleChangeFilter = e => {
@@ -13,80 +16,118 @@ export default class Home extends Component {
 		this.setState({ filter: text });
 	};
 
-	handleFilter = key => _ => { // eslint-disable-line no-unused-vars
-      if (key === this.state.cityOrNameFilter) {
-         return this.setState({ cityOrNameFilter: null });
+	handleCategoryFilter = key => _ => { // eslint-disable-line no-unused-vars
+      if (key === this.state.categoryFilter) {
+         return this.setState({ categoryFilter: null });
       }
-      this.setState({ cityOrNameFilter: key });
+      this.setState({ categoryFilter: key });
    };
 
-	filteredCategories(filter, cityOrNameFilter) {
+	filteredCategories(filter, categoryFilter) {
 		const { results } = this.props;
-		const regex = new RegExp(`${filter}`, 'i');
+		const regexStore = new RegExp(`${filter}`, 'i');
+    const regexCategory = new RegExp(`[${filter}]{${filter.length},}`, 'i');
 
 		return Object.keys(results)
-			.filter(key => (cityOrNameFilter ? cityOrNameFilter === key : true))
+			.filter(key => (categoryFilter ? categoryFilter === key : true))
 			.reduce((acc, key) => {
-				return (
-					{
-						...acc,
-						[key]: {
-							icon: results[key].icon,
-							data: results[key].data.filter(e => (filter.length ? regex.test(e.where) || regex.test(e.name) : true))
-						}
-					}
-				);
-			}, {});
+        return (
+          {
+            ...acc,
+            [key]: {
+              icon: results[key].icon,
+              data: regexCategory.test(key)
+               ? results[key].data
+               : results[key].data.filter(e =>
+                    filter.length ? regexStore.test(e.where) || regexStore.test(e.name) : true
+                 )
+            }
+          }
+        );
+      }, {});
 	}
 
-	render(props, { filter, cityOrNameFilter }) {
+  isEmptySearch(filteredStores) {
+    let storesFound = 0;
+    for (let key in filteredStores) {
+      storesFound += filteredStores[key].data.length;
+    }
+    return storesFound === 0;
+  }
+
+	render(props, { filter, categoryFilter }) {
 		const { results: stores } = props;
-		const filteredStores = this.filteredCategories(filter, cityOrNameFilter)
+		const filteredStores = this.filteredCategories(filter, categoryFilter)
+    const isEmptySearch = this.isEmptySearch(filteredStores);
 
 		return (
 			<Fragment>
-        <h1 class="">{`${process.env.PREACT_APP_CITY}`}</h1>
-        <h2>Tutte le attività che effettuano consegne a domicilio in Valle Camonica. Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>
-				<div class="relative py-5 lg:max-w-5xl xl:max-w-6xl lg:m-auto">
-					<input
-						class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base"
-						type="text"
-						placeholder="Nome del tuo paese o nome dell'attività"
-						onInput={this.handleChangeFilter}
-					/>
-				</div>
-        <p class="pb-2">Oppure filtra per categoria:</p>
-				<div class="relative pb-5 flex overflow-x-scroll lg:overflow-x-hidden lg:flex-wrap">
-					{Object.keys(stores).map(key => (
-						<button
-							onClick={this.handleFilter(key)}
-							class={`mr-2 flex-grow-0 flex-shrink-0 items-center border border-teal-500 py-2 px-4 ${
-								key === cityOrNameFilter
-									? "bg-teal-500 hover:bg-teal-500 text-white"
-									: "bg-white hover:bg-teal-500 hover:text-white"
-							}`}
-						>
-							<span>{key}</span>
-						</button>
-					))}
-				</div>
-				<div class="relative mb-10 text-md">
-					{
-            (Object.keys(filteredStores).filter(key => filteredStores[key].data.length).length > 0
-              ? Object.keys(filteredStores)
-                  .filter(key => filteredStores[key].data.length)
-                  .map(key => (
-                    <ListCategory
-                      name={key}
-                      category={filteredStores[key]}
-                      filter={filter}
-                    />
-                  ))    
-              : <span class="my-5 block">Oops! Non abbiamo trovato risultati...</span>
-            )
-            		
-					}
-				</div>
+
+        <div class="max-w-screen-lg mx-auto px-5">
+
+          <h2 class="text-center font-thin">Scopri quali attività effettuano consegne a domicilio in Valle Camonica.</h2>
+          <h2 class="text-center font-semibold">Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>  
+
+          <div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
+            <Scrollchor to="#search-component" animate={{ duration: 600 }}>
+              <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
+            </Scrollchor>
+            <Link href="/form">
+              <button class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
+            </Link>
+          </div>
+
+
+
+        </div>
+
+        <div class="bg-vcd-arancione mt-10 py-10 w-full" id="search-component">
+          <div class="max-w-screen-lg mx-auto text-center px-5">
+            <p class="text-white mb-4">Inserisci il nome del paese o dell'attività che stai cercando</p>
+            <input
+              class="bg-white py-3 px-4 w-full appearance-none leading-normal text-center rounded text-lg font-semibold focus:outline-none mb-8"
+              type="text"
+              placeholder="es. Edolo, Syesta, Nami Sushi"
+              onInput={this.handleChangeFilter}
+            />
+            <p class="text-white mb-4">Filtra per categoria</p>
+            <div class="flex justify-center items-center">
+              {Object.keys(stores).map(key => (
+                <button
+                  onClick={this.handleCategoryFilter(key)}
+                  class={`vcd-category-button mx-2 ${
+                    key === categoryFilter
+                      ? "vcd-category-button--pressed"
+                      : ""
+                  }`}
+                >
+                  <span>{key}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-screen-lg mx-auto mt-10 px-5">
+				
+  				
+  				{
+              Object.keys(filteredStores)
+                .filter(key => filteredStores[key].data.length)
+                .map(key => (
+                  <ListCategory
+                    name={key}
+                    category={filteredStores[key]}
+                    filter={filter}
+                  />
+                ))
+            }
+            {isEmptySearch && (
+              <span class="my-5 block">Oops! Non abbiamo trovato risultati corrispondenti alla tua ricerca.</span>
+            )}
+
+        </div>
+        
 			</Fragment>
 		);
 	}

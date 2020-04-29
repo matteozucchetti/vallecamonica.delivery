@@ -2,8 +2,8 @@ import { ListItem } from './lisItem';
 
 export const ListCategory = ({ name = '', category = {}}) => {
 	return (
-		<section id={name.replace(' ', '_')} className="relative py-5">
-			<h2 className="text-2xl md:text-3xl capitalize">
+		<section id={name.replace(' ', '_')} className="">
+			<h2 className="capitalize">
 				{name}
 			</h2>
 			<div>

@@ -16,18 +16,18 @@ export default class Footer extends Component {
         <div class="px-5 max-w-screen-lg mx-auto text-center vcd-footer pb-10">
           <p class="mb-5">
             Developed with ❤️ by
-            <a class="text-teal-500" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>, special thanks to Matteo Bernardi
+            <a class="text-vcd-azzurro" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a> and <a class="text-vcd-azzurro" href="https://www.linkedin.com/in/francesca-da-forno-55312a119/" target="_blank">Francesca Da Forno</a>, special thanks to Matteo Bernardi
           </p>
           <a href="https://www.instagram.com/vallecamonica_delivery/"
             target="_blank"
             rel="noopener noreferrer"
-            class="mb-5 text-xs block hover:underline text-teal-500"
+            class="mb-5 text-xs block hover:underline text-vcd-azzurro"
           >Visita la nostra pagina Instagram</a>
           <a href="https://github.com/tomma5o/domicilioBoilerplate"
             target="_blank"
             rel="noopener noreferrer"
             class="mb-5 text-xs block hover:underline"
-          >Se vuoi creare una piattaforma simile per la tua città, visita la pagina GitHub del progetto</a>
+          >Based on this GitHub project</a>
           <p class="text-center">
             <a href="https://www.iubenda.com/privacy-policy/19385130" class="iubenda-white iubenda-embed" title="Privacy Policy ">Privacy Policy</a>
             <a href="https://www.iubenda.com/privacy-policy/19385130/cookie-policy" class="iubenda-white iubenda-embed" title="Cookie Policy ">Cookie Policy</a>

@@ -13,6 +13,7 @@ import Form from './routes/form';
 import FormSuccess from './routes/formSuccess';
 
 // Components
+import Header from './components/header';
 import Footer from './components/footer';
 import { Dialog } from './components/dialog';
 import { PWAPrompt } from './components/pwaPrompt';
@@ -73,14 +74,10 @@ export default class App extends Component {
 	render(props, { isHomepage, results, popupData, isPopupOpen }) {
 		return (
 			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
-				<div id="app" class="px-5 py-5 max-w-screen-lg mx-auto">
-          <VcdLogo class="w-1/2 mx-auto mb-10 main-logo" />       
-					<div class="flex justify-center items-center">
-            {
-              isHomepage
-                ? <Link class="myButton" href="/form">Aggiungi un'attività</Link>
-                : <Link class="myButton" href="/">Torna indietro</Link>
-            }
+        <Header />
+				<div id="app">
+          <div class="max-w-screen-lg mx-auto">
+            <VcdLogo class="w-1/2 mx-auto my-10 main-logo" />
           </div>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />

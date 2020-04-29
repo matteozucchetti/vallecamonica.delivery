@@ -5,7 +5,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        'vcd-azzurro': '#4FD1C5',
+        'vcd-azzurro': '#61bfbc',
+        'vcd-azzurro-scuro': '#429a96',
         'vcd-arancione': '#F2923E',
         'vcd-rosa': '#EC6680',
         'vcd-rosso': '#E83261',
