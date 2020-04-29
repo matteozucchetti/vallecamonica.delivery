@@ -66,25 +66,23 @@ export default class Home extends Component {
         <div class="max-w-screen-lg mx-auto px-5">
 
           <h2 class="text-center font-thin">Scopri quali attività effettuano consegne a domicilio in Valle Camonica.</h2>
-          <h2 class="text-center font-semibold">Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>  
-
-          <h3 class="text-center font-thin text-vcd-arancione mt-10 tracking-wide text-3xl">COMING SOON</h3>
+          <h2 class="text-center font-semibold">Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>
 
 
-          {/*<div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
+          <div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
             <Scrollchor to="#search-component" animate={{ duration: 600 }}>
               <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
             </Scrollchor>
             <Link href="/form">
               <button class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
             </Link>
-          </div>*/}
+          </div>
 
 
 
         </div>
 
-        {/*<div class="bg-vcd-arancione mt-10 py-10 w-full" id="search-component">
+        <div class="bg-vcd-arancione mt-10 py-10 w-full" id="search-component">
           <div class="max-w-screen-lg mx-auto text-center px-5">
             <p class="text-white mb-4">Inserisci il nome del paese o dell'attività che stai cercando</p>
             <input
@@ -94,11 +92,11 @@ export default class Home extends Component {
               onInput={this.handleChangeFilter}
             />
             <p class="text-white mb-4">Filtra per categoria</p>
-            <div class="flex justify-center items-center">
+            <div class="flex overflow-x-scroll md:overflow-x-visible md:flex-wrap md:justify-center">
               {Object.keys(stores).map(key => (
                 <button
                   onClick={this.handleCategoryFilter(key)}
-                  class={`vcd-category-button mx-2 ${
+                  class={`vcd-category-button mx-2 mb-2 flex-grow-0 flex-shrink-0 ${
                     key === categoryFilter
                       ? "vcd-category-button--pressed"
                       : ""
@@ -129,7 +127,7 @@ export default class Home extends Component {
               <span class="my-5 block">Oops! Non abbiamo trovato risultati corrispondenti alla tua ricerca.</span>
             )}
 
-        </div>*/}
+        </div>
         
 			</Fragment>
 		);

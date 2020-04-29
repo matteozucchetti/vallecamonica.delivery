@@ -85,7 +85,7 @@ export default class App extends Component {
 						<FormSuccess path="/form/success" />
 					</Router>       
 				</div>
-        {/*<Footer />*/}
+        <Footer />
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>

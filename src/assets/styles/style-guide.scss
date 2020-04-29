@@ -47,7 +47,7 @@ input{
 }
 
 .vcd-category-button{
-  @apply bg-vcd-arancione text-white py-2 px-5 border border-white rounded;
+  @apply bg-vcd-arancione text-white py-2 px-6 border border-white rounded;
   &--pressed{
     @apply bg-white text-vcd-arancione;
   }
