@@ -43,6 +43,7 @@
     "preact-cli-svg-loader": "^1.1.0",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
+    "preact-scrollchor": "^4.4.0",
     "react-ios-pwa-prompt": "^1.7.0"
   }
 }
