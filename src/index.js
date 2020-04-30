@@ -77,7 +77,7 @@ export default class App extends Component {
         <Header />
 				<div id="app">
           <div class="max-w-screen-lg mx-auto">
-            <VcdLogo class="w-1/2 mx-auto my-10 main-logo" />
+            <VcdLogo class="w-4/6 md:w-1/2 mx-auto my-10 main-logo" />
           </div>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />

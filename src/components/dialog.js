@@ -25,7 +25,7 @@ export const Dialog = ({
 }) => {
 	return (
 		<dialog 
-			class="fixed inset-x-0 top-0 backdrop w-screen h-screen"
+			class="fixed inset-x-0 top-0 backdrop w-screen h-screen z-20"
 			style={{display: isOpen ? "initial" : "none"}}
 			onClick={closePopup}
 		>

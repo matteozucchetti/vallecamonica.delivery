@@ -10,6 +10,7 @@ module.exports = {
         'vcd-arancione': '#F2923E',
         'vcd-rosa': '#EC6680',
         'vcd-rosso': '#E83261',
+        'vcd-black': '#535353'
       }
     }
 	}

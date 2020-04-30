@@ -5,6 +5,10 @@ import Scrollchor from "preact-scrollchor"
 
 import { ListCategory } from '../components/listCategory';
 
+// Images
+import InstaBadge from '../assets/svg/insta_profile.svg';
+import Deco from '../assets/svg/hp_decoration.svg';
+
 export default class Home extends Component {
 	state = {
 		filter: '',
@@ -127,6 +131,21 @@ export default class Home extends Component {
               <span class="my-5 block">Oops! Non abbiamo trovato risultati corrispondenti alla tua ricerca.</span>
             )}
 
+        </div>
+
+        <div class="w-full mx-auto px-5 pb-10 text-center relative" id="insta-component">
+          
+          <a href="https://www.instagram.com/vallecamonica_delivery/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstaBadge />
+            <p class="text-xl md:text-2xl font-thin my-5">@vallecamonica_delivery</p>
+            <p class="font-thin mb-5">Seguici su Instagram<br />per rimanere sempre aggiornato sulle ultime novità</p>
+            <button class="vcd-button w-full text-center md:w-auto">seguici</button>
+          </a>
+          <Deco className="hidden md:block hp-deco hp-deco--left" />
+          <Deco className="hidden md:block hp-deco hp-deco--right" />
         </div>
         
 			</Fragment>

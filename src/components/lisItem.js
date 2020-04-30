@@ -1,7 +1,11 @@
 import { useContext } from 'preact/hooks';
 
 // Actions
-import { Action } from '../index'
+import { Action } from '../index';
+
+// Images
+import IconInfo from '../assets/svg/icon_info.svg';
+import IconTel from '../assets/svg/icon_tel.svg';
 
 export const ListItem = (props) => {
 	const { name, tel, site, mail, payments, services, note, where, newEntry } = props;
@@ -15,54 +19,34 @@ export const ListItem = (props) => {
 	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));
 
 	return (
-		<article onClick={(e) => action.setPopupNumbers(e, props)} class={`relative cursor-pointer border border-teal-500 p-4 my-5 ${newEntry ? "new-entry" : ""}`}>
-			<div class="flex justify-between items-center">
-				<span>{name}</span>				
-				<div class="flex">
-					{isInfoVisible && 
+		<article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${newEntry ? "new-entry" : ""}`}>
+
+      <div onClick={(e) => action.setPopupNumbers(e, props)} class="flex flex-auto justify-start items-center border border-vcd-black rounded px-2 py-3 md:p-4">
+        <span class="text-sm md:text-base">{name}</span>
+      </div>
+
+      {isInfoVisible && 
+  			<div onClick={(e) => action.setPopupNumbers(e, props)} class="vdc-infoButtons vdc-infoButtons--info">  				
+  					<span
+  						role="img"
+  						aria-label="more info"
+  					><IconInfo width="100%" fill="#fff" />
+  					</span>
+        </div>
+      }
+
+      {tel && (
+        <div class="vdc-infoButtons vdc-infoButtons--tel">
+					<a href={`tel:${tel}`} onClick={(e) => tel.length > 1 && action.setPopupNumbers(e, props)}>
 						<span
-							class="inline-block mx-1 cursor-pointer text-center"
 							role="img"
-							aria-label="more info"
-						>
-							ℹ️
+							aria-label="telephone"
+						><IconTel width="100%" fill="#fff" />
 						</span>
-					}
-					{mail && !site && !tel && (
-						<a href={`mailto:${mail}`}>
-							<span
-								class="inline-block mx-1 cursor-pointer text-center"
-								role="img"
-								aria-label="mail"
-							>
-							✉️
-							</span>
-						</a>
-					)}
-					{site && !tel && (
-						<a href={`${site}`}>
-							<span
-								class="inline-block mx-1 cursor-pointer text-center"
-								role="img"
-								aria-label="website"
-							>
-							🌐
-							</span>
-						</a>
-					)}
-					{tel && (
-						<a href={`tel:${tel}`} onClick={(e) => Array.isArray(tel) && action.setPopupNumbers(e, props)}>
-							<span
-								class="inline-block mx-1 cursor-pointer text-center"
-								role="img"
-								aria-label="telephone"
-							>
-							📞
-							</span>
-						</a>
-					)}
-				</div>
-			</div>
+					</a>
+			 </div>
+      )}
+
     </article>
 	);
 };

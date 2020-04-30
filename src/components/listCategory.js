@@ -3,8 +3,8 @@ import { ListItem } from './lisItem';
 export const ListCategory = ({ name = '', category = {}}) => {
 	return (
 		<section id={name.replace(' ', '_')} className="">
-			<h2 className="capitalize">
-				{name}
+			<h2 className="text-center font-semibold category-heading my-10">
+        <span class="bg-white inline-block relative z-10 px-10">{name}</span>
 			</h2>
 			<div>
 				{
