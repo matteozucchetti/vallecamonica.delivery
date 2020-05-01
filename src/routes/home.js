@@ -64,9 +64,14 @@ export default class Home extends Component {
   }
 
 	render(props, { filter, categoryFilter }) {
+
 		const { results: stores } = props;
 		const filteredStores = this.filteredCategories(filter, categoryFilter)
     const isEmptySearch = this.isEmptySearch(filteredStores);
+
+    let removedHidden = _.pickBy(stores, function(value, key){
+      return value.hidden === false
+    })
 
 		return (
 			<Fragment>
@@ -101,7 +106,7 @@ export default class Home extends Component {
             />
             <p class="text-white mb-4">Filtra per categoria</p>
             <div class="flex overflow-x-scroll md:overflow-x-visible md:flex-wrap md:justify-center">
-              {Object.keys(stores).map(key => (
+              {Object.keys(removedHidden).map(key => (
                 <button
                   onClick={this.handleCategoryFilter(key)}
                   class={`vcd-category-button mx-2 mb-2 flex-grow-0 flex-shrink-0 ${
