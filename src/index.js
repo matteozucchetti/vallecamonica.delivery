@@ -4,7 +4,7 @@ import { Link } from 'preact-router/match';
 
 import './assets/styles/global.css';
 
-// Lodash
+// Lodash 
 let _ = require('lodash');
 
 // Routes
