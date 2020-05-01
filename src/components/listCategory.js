@@ -1,6 +1,7 @@
 import { ListItem } from './lisItem';
 
 export const ListCategory = ({ name = '', category = {}}) => {
+
 	return (
 		<section id={name.replace(' ', '_')} className="">
 			<h2 className="text-center font-semibold category-heading my-10">
@@ -8,10 +9,11 @@ export const ListCategory = ({ name = '', category = {}}) => {
 			</h2>
 			<div>
 				{
-					category.data
-						.map(props => (
-							<ListItem key={props.tel} {...props} />
-						))
+          category.data
+					.map(props => (
+            (!props.hidden && <ListItem key={props.tel} {...props} />)
+            
+					))
 				}
 			</div>
 		</section>

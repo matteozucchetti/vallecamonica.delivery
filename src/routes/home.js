@@ -32,14 +32,18 @@ export default class Home extends Component {
 		const regexStore = new RegExp(`${filter}`, 'i');
     const regexCategory = new RegExp(`[${filter}]{${filter.length},}`, 'i');
 
-		return Object.keys(results)
+    let removedHidden = _.pickBy(results, function(value, key){
+      return value.hidden === false
+    })
+
+		return Object.keys(removedHidden)
 			.filter(key => (categoryFilter ? categoryFilter === key : true))
 			.reduce((acc, key) => {
         return (
           {
             ...acc,
             [key]: {
-              icon: results[key].icon,
+              hidden: results[key].hidden,
               data: regexCategory.test(key)
                ? results[key].data
                : results[key].data.filter(e =>
