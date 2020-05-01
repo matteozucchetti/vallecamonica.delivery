@@ -58,12 +58,8 @@ export const Dialog = ({
         </div>
 
         <div class="flex">
-          <div class="pr-5 md:pr-10">
-            {delivery_fee && <D_DeliveryFee {...{delivery_fee}} />}
-          </div>
-          <div class="pr-5 md:pr-10">
-            {min_order && <D_MinOrder {...{min_order}} />}
-          </div>
+          {delivery_fee && <div class="pr-5 md:pr-10"><D_DeliveryFee {...{delivery_fee}} /></div>}
+          {min_order && <div class="pr-5 md:pr-10"><D_MinOrder {...{min_order}} /></div>}
         </div>
 
         <div class="flex">

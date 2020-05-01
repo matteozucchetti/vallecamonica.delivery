@@ -11,8 +11,7 @@ export const ListCategory = ({ name = '', category = {}}) => {
 				{
           category.data
 					.map(props => (
-            (!props.hidden && <ListItem key={props.tel} {...props} />)
-            
+            (!props.hidden && <ListItem key={props.tel} {...props} />)            
 					))
 				}
 			</div>
