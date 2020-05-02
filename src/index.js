@@ -79,7 +79,7 @@ export default class App extends Component {
 		return (
 			<Action.Provider value={{setPopupNumbers: this.setPopupNumbers}}>
         <Header />
-				<div id="app">
+				<div id="app" class="relative">
           <div class="max-w-screen-lg mx-auto">
             <VcdLogo class="w-4/6 md:w-1/2 mx-auto my-10 main-logo" />
           </div>
