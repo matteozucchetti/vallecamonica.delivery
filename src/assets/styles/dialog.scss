@@ -34,10 +34,13 @@
     @apply border-b-2 border-t-2 border-vcd-rosa;
   }
   @mixin centerer false, true;
-  right: 35px;
+  right: 10px;
   width: 35px;
   height: 35px;
   line-height: 35px;
+  @screen md {
+    right: 35px;
+  }    
   svg{
     padding: 5px;
     width: 100%;

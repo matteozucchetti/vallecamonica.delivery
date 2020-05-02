@@ -31,7 +31,7 @@ export const D_Contacts = ({tel, mail, site}) => {
       <div class="vcd-dialogBox border-none">
         <div class="w-full">
     			<h3 class="mt-4 mb-2">Contatti</h3>
-    			<div class="mb-2 mt-4 text-sm flex justify-center items-center">
+    			<div class="mb-2 mt-4 text-sm flex justify-center items-start">
     				{tel && (
     					<div class="text-center flex-1 mb-2">
                 <TelIcon

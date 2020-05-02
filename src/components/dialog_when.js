@@ -10,9 +10,9 @@ export const D_When = ({when}) => {
       <div class="vcd-dialogBox">
         <div class="w-full">
     			<h3 class="mt-4 mb-2">Giorni</h3>
-    			<div class="mb-2 mt-4 text-xs flex justify-center items-center max-w-screen-sm mx-auto">
+    			<div class="mb-2 mt-4 text-xs flex justify-center items-center max-w-screen-sm mx-auto flex-wrap">
 
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.lun
                 ? "active"
@@ -20,7 +20,7 @@ export const D_When = ({when}) => {
               }`} />
               Lunedì
             </div>
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.mar
                 ? "active"
@@ -28,7 +28,7 @@ export const D_When = ({when}) => {
               }`} />
               Martedì
             </div>
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.mer
                 ? "active"
@@ -36,7 +36,7 @@ export const D_When = ({when}) => {
               }`} />
               Mercoledì
             </div>
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.gio
                 ? "active"
@@ -44,7 +44,7 @@ export const D_When = ({when}) => {
               }`} />
               Giovedì
             </div>
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.ven
                 ? "active"
@@ -52,7 +52,7 @@ export const D_When = ({when}) => {
               }`} />
               Venerdì
             </div>
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.sab
                 ? "active"
@@ -60,7 +60,7 @@ export const D_When = ({when}) => {
               }`} />
               Sabato
             </div>
-            <div class="flex-1 mx-5">
+            <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
                 when.dom
                 ? "active"
