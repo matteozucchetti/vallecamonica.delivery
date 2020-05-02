@@ -10,14 +10,11 @@ import { D_MinOrder } from './dialog_min_order.js';
 
 // Images
 import CloseIcon from '../assets/svg/icon_close.svg';
-import MailIcon from '../assets/svg/icon_mail.svg';
-import WebsiteIcon from '../assets/svg/icon_website.svg';
-import FacebookIcon from '../assets/svg/icon_facebook.svg';
-import TelIcon from '../assets/svg/icon_tel.svg';
 
 export const Dialog = ({
 	isOpen,
 	closePopup,
+  closePopupFromButton,
 	name,
 	tel,
 	mail,
@@ -32,25 +29,25 @@ export const Dialog = ({
 }) => {
 	return (
 		<dialog 
-			class="fixed inset-x-0 top-0 backdrop w-screen h-screen z-20"
+			class="fixed inset-x-0 top-0 backdrop w-screen h-screen z-20 vcdDialog overflow-y-scroll overflow-x-hidden"
 			style={{display: isOpen ? "initial" : "none"}}
-			onClick={closePopup}
+      onClick={closePopup}
 		>
 			<div
-				class="absolute w-5/6 max-w-screen-lg shadow-lg bg-white"
-				style={{top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}
+				class="w-full md:w-5/6 max-w-screen-lg shadow-lg bg-white vcdDialog-inner"
 			>
-				<div class="flex justify-center items-center bg-vcd-azzurro p-6 relative">
+				<div class="flex justify-center items-center bg-vcd-azzurro p-3 md:p-6 relative">
 
 					<h2 class="text-2xl font-bold text-white">{name}</h2>
 
 					<button
-						class="vcd-closeButton"
-					><CloseIcon onClick={closePopup} /></button>
+						class="vcd-closeButton z-30"
+            onClick={closePopupFromButton}
+					><CloseIcon /></button>
 
 				</div>
 
-        <div class="px-6 relative border-b-8 border-vcd-rosa">
+        <div class="px-3 md:px-6 relative border-b-8 border-vcd-rosa">
 
           {where && <D_Where {...{where}} />}
           {when && <D_When {...{when}} />}

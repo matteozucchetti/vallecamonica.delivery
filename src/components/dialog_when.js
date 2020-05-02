@@ -5,12 +5,6 @@ import CheckIcon from '../assets/svg/icon_check.svg';
 
 export const D_When = ({when}) => {
 
-  console.log(when.lun)
-
-  // let activeDaysObj = _.pickBy(when);
-  // let activeDaysArr = _.keys(activeDaysObj);
-  // let length = activeDaysArr.length
-
 	return (
 		<Fragment>
       <div class="vcd-dialogBox">

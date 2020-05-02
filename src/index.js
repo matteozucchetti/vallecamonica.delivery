@@ -47,11 +47,15 @@ export default class App extends Component {
 		})
 	}
 
-	closePopup = (e) => {	
-		if (e.currentTarget === e.target) {
+	closePopup = (e) => {
+		if (e.currentTarget === e.target) {      
 			this.setState({ isPopupOpen: false })
 		}
 	}
+
+  closePopupFromButton = (e) => {
+    this.setState({ isPopupOpen: false })
+  }
 
 	componentDidMount() {
 		fetch(`${process.env.PREACT_APP_DATA_SOURCE}?c=${Math.random().toString(36).split('.')[1]}`)
@@ -86,7 +90,7 @@ export default class App extends Component {
 					</Router>       
 				</div>
         <Footer />
-				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} {...popupData} />
+				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>
 		);

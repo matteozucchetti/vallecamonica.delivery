@@ -17,6 +17,17 @@
   border-radius: 20px;
 }
 
+.vcdDialog{
+  padding: 0;
+  &-inner{
+    @mixin centerer true, false;
+    top: 0;
+    @screen md {
+      @mixin centerer true, true;
+    }    
+  }
+}
+
 .vcd-closeButton{
   @apply text-center cursor-pointer bg-vcd-rosa text-white border-b-4 border-vcd-rosso rounded;
   &:hover{
@@ -44,5 +55,11 @@
     path{
       opacity: 0;
     }
+  }
+}
+
+.contact-icon{
+  path{
+    fill: #F2923E;
   }
 }
