@@ -1,7 +1,7 @@
 .backdrop {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background-color: rgba(250, 250, 250, 0.8);
+  background-color: rgba(242, 146, 62, .7);
 }
 
 .new-entry::after {
@@ -15,4 +15,34 @@
   color: #fff;
   padding: 2px 7px;
   border-radius: 20px;
+}
+
+.vcd-closeButton{
+  @apply text-center cursor-pointer bg-vcd-rosa text-white border-b-4 border-vcd-rosso rounded;
+  &:hover{
+    @apply border-b-2 border-t-2 border-vcd-rosa;
+  }
+  @mixin centerer false, true;
+  right: 35px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  svg{
+    padding: 5px;
+    width: 100%;
+  }
+}
+
+.vcd-dialogBox{
+  @apply flex text-center max-w-screen-md mx-auto border-b border-vcd-azzurro py-4;
+}
+
+.day-check{
+  @apply border rounded-lg mx-auto mb-2;
+  max-width: 35px;
+  &.inactive{
+    path{
+      opacity: 0;
+    }
+  }
 }

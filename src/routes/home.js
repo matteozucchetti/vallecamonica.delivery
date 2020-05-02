@@ -7,7 +7,7 @@ import { ListCategory } from '../components/listCategory';
 
 // Images
 import InstaBadge from '../assets/svg/insta_profile.svg';
-import Deco from '../assets/svg/hp_decoration.svg';
+import Deco from '../assets/svg/decoration.svg';
 
 export default class Home extends Component {
 	state = {
@@ -153,8 +153,8 @@ export default class Home extends Component {
             <p class="font-thin mb-5">Seguici su Instagram<br />per rimanere sempre aggiornato sulle ultime novità</p>
             <button class="vcd-button w-full text-center md:w-auto">seguici</button>
           </a>
-          <Deco className="hidden md:block hp-deco hp-deco--left" />
-          <Deco className="hidden md:block hp-deco hp-deco--right" />
+          <Deco className="hidden md:block deco deco--left" />
+          <Deco className="hidden md:block deco deco--right" />
         </div>
         
 			</Fragment>

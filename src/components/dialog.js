@@ -8,6 +8,13 @@ import { D_When } from './dialog_when';
 import { D_DeliveryFee } from './dialog_delivery_fee.js';
 import { D_MinOrder } from './dialog_min_order.js';
 
+// Images
+import CloseIcon from '../assets/svg/icon_close.svg';
+import MailIcon from '../assets/svg/icon_mail.svg';
+import WebsiteIcon from '../assets/svg/icon_website.svg';
+import FacebookIcon from '../assets/svg/icon_facebook.svg';
+import TelIcon from '../assets/svg/icon_tel.svg';
+
 export const Dialog = ({
 	isOpen,
 	closePopup,
@@ -30,63 +37,42 @@ export const Dialog = ({
 			onClick={closePopup}
 		>
 			<div
-				class="absolute w-5/6 max-w-screen-md p-4 md:p-8 shadow-lg bg-white"
+				class="absolute w-5/6 max-w-screen-lg shadow-lg bg-white"
 				style={{top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}
 			>
-				<div class="flex justify-between">
+				<div class="flex justify-center items-center bg-vcd-azzurro p-6 relative">
 
-					<h2 class="text-2xl mb-5 font-bold flex-1">{name}</h2>
+					<h2 class="text-2xl font-bold text-white">{name}</h2>
 
-					<span
-						class="bg-teal-500 text-center cursor-pointer text-white"
-						style={{ width: '30px', height: '30px', lineHeight: '30px' }}
-						onClick={closePopup}
-					>X</span>
+					<button
+						class="vcd-closeButton"
+					><CloseIcon onClick={closePopup} /></button>
 
 				</div>
 
-        <div class="flex">
-          <div class="w-full">
-            {where && <D_Where {...{where}} />}
-          </div>
-        </div>
+        <div class="px-6 relative border-b-8 border-vcd-rosa">
 
-        <div class="flex">
-          <div class="w-full">
-            {when && <D_When {...{when}} />}
-          </div>
-        </div>
+          {where && <D_Where {...{where}} />}
+          {when && <D_When {...{when}} />}
+          {
+            (delivery_fee || min_order)
+            ?
+            <div class="vcd-dialogBox justify-center items-center">
+              {delivery_fee && <div class="px-5"><D_DeliveryFee {...{delivery_fee}} /></div>}
+              {min_order && <div class="px-5"><D_MinOrder {...{min_order}} /></div>}
+            </div>
+            : null
+          }
+          {note && <D_Notes {...{note}} />}
+          <D_Contacts {...{tel, mail, site}} />
 
-        <div class="flex">
-          {delivery_fee && <div class="pr-5 md:pr-10"><D_DeliveryFee {...{delivery_fee}} /></div>}
-          {min_order && <div class="pr-5 md:pr-10"><D_MinOrder {...{min_order}} /></div>}
-        </div>
+          {/*
+            {payments && <D_Payments {...{payments}} />}
+            {services && <D_Services {...{services}} />}
+          */}
 
-        <div class="flex">
-          <div class="w-full">
-  				  {note && <D_Notes {...{note}} />}
-          </div>
-        </div>
-
-        <div class="flex">
-          <div class="w-full">
-  				  <D_Contacts {...{tel, mail, site}} />
-          </div>
-        </div>
-
-        <div class="flex">
-          <div class="w-full">
-  				  {payments && <D_Payments {...{payments}} />}
-          </div>
-        </div>
-
-        <div class="flex">
-          <div class="w-full">
-  				  {services && <D_Services {...{services}} />}
-          </div>
-        </div>
-
-			</div>
+			 </div>
+      </div>
 		</dialog>
 	);
 };

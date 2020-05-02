@@ -1,28 +1,83 @@
 import { Fragment } from "preact";
 
+// Images
+import CheckIcon from '../assets/svg/icon_check.svg';
+
 export const D_When = ({when}) => {
 
-  let activeDaysObj = _.pickBy(when);
-  let activeDaysArr = _.keys(activeDaysObj);
-  let length = activeDaysArr.length
+  console.log(when.lun)
+
+  // let activeDaysObj = _.pickBy(when);
+  // let activeDaysArr = _.keys(activeDaysObj);
+  // let length = activeDaysArr.length
 
 	return (
 		<Fragment>
-			<h3 class="mt-4 mb-2">Giorni:</h3>
-			<div class="mb-2">
-        <p>
-            {length === 7 ? (
-                <span class="day">Tutti i giorni</span>
-            ) : (
-              activeDaysArr.map((value, index) => {
-                return ( index === length - 1
-                  ? <span class="capitalize" key={index}>{value}</span>
-                  : <span class="capitalize" key={index}>{value}, </span>                
-                )
-              })
-            )}
-        </p>
-			</div>
+      <div class="vcd-dialogBox">
+        <div class="w-full">
+    			<h3 class="mt-4 mb-2">Giorni</h3>
+    			<div class="mb-2 mt-4 text-xs flex justify-center items-center max-w-screen-sm mx-auto">
+
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.lun
+                ? "active"
+                : "inactive"
+              }`} />
+              Lunedì
+            </div>
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.mar
+                ? "active"
+                : "inactive"
+              }`} />
+              Martedì
+            </div>
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.mer
+                ? "active"
+                : "inactive"
+              }`} />
+              Mercoledì
+            </div>
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.gio
+                ? "active"
+                : "inactive"
+              }`} />
+              Giovedì
+            </div>
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.ven
+                ? "active"
+                : "inactive"
+              }`} />
+              Venerdì
+            </div>
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.sab
+                ? "active"
+                : "inactive"
+              }`} />
+              Sabato
+            </div>
+            <div class="flex-1 mx-5">
+              <CheckIcon class={`day-check ${
+                when.dom
+                ? "active"
+                : "inactive"
+              }`} />
+              Domenica
+            </div>
+
+    			</div>
+        </div>
+      </div>
 		</Fragment>
 	);
 };

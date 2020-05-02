@@ -22,49 +22,53 @@ function Tel({tel}) {
 export const D_Contacts = ({tel, mail, site}) => {
 	return (
 		<Fragment>
-			<h3 class="mt-4 mb-2">Contatti:</h3>
-			<div class="mb-2">
-				{tel && (
-					<p class="mb-2">
-						<span
-							class="inline-block mr-2 w-6 h-6 bg-teal-500 text-xs text-center leading-6 cursor-pointer"
-							role="img"
-							aria-label="telephone"
-						>
-						📞
-						</span>
-						<Tel {...{tel}} />
-					</p>
-				)}
-				{site && (
-					<p class="mb-2">
-						<span
-							class="inline-block mr-2 w-6 h-6 bg-orange-300 text-xs text-center leading-6 cursor-pointer"
-							role="img"
-							aria-label="see the site"
-						>
-						🌐
-						</span>
-						<a href={site} target="_blank" class="inline-block rounded-lg text-sm">
-							<span>{cleanUrls(site)}</span>
-						</a>
-					</p>
-				)}
-				{mail && (
-					<p class="mb-2">
-						<span
-							class="inline-block mr-2 w-6 h-6 bg-blue-300 text-xs text-center leading-6 cursor-pointer"
-							role="img"
-							aria-label="send mail"
-						>
-						✉️
-						</span>
-						<a href={`mailto:${mail}`} class="inline-block rounded-lg text-sm">
-							<span>{mail}</span>
-						</a>
-					</p>
-				)}
-			</div>
+      <div class="vcd-dialogBox border-none">
+        <div class="w-full">
+    			<h3 class="mt-4 mb-2">Contatti</h3>
+    			<div class="mb-2 text-sm">
+    				{tel && (
+    					<p class="mb-2">
+    						<span
+    							class="inline-block mr-2 w-6 h-6 bg-teal-500 text-xs text-center leading-6 cursor-pointer"
+    							role="img"
+    							aria-label="telephone"
+    						>
+    						📞
+    						</span>
+    						<Tel {...{tel}} />
+    					</p>
+    				)}
+    				{site && (
+    					<p class="mb-2">
+    						<span
+    							class="inline-block mr-2 w-6 h-6 bg-orange-300 text-xs text-center leading-6 cursor-pointer"
+    							role="img"
+    							aria-label="see the site"
+    						>
+    						🌐
+    						</span>
+    						<a href={site} target="_blank" class="inline-block rounded-lg text-sm">
+    							<span>{cleanUrls(site)}</span>
+    						</a>
+    					</p>
+    				)}
+    				{mail && (
+    					<p class="mb-2">
+    						<span
+    							class="inline-block mr-2 w-6 h-6 bg-blue-300 text-xs text-center leading-6 cursor-pointer"
+    							role="img"
+    							aria-label="send mail"
+    						>
+    						✉️
+    						</span>
+    						<a href={`mailto:${mail}`} class="inline-block rounded-lg text-sm">
+    							<span>{mail}</span>
+    						</a>
+    					</p>
+    				)}
+    			</div>
+        </div>
+      </div>
 		</Fragment>
 	);
 }
