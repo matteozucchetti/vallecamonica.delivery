@@ -4,17 +4,15 @@
   background-color: rgba(242, 146, 62, .7);
 }
 
-.new-entry::after {
-  content: 'Nuovo';
+.closed-today::after {
+  content: 'Oggi chiuso';
   position: absolute;
   top: -11px;
-  background-color: #4299e1;
-  border: 1px solid #3782c0;
+  left: 10px;
+  @apply bg-vcd-rosa rounded font-light text-white;
   text-transform: uppercase;
   font-size: 10px;
-  color: #fff;
   padding: 2px 7px;
-  border-radius: 20px;
 }
 
 .vcdDialog{

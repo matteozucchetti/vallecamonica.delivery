@@ -11,16 +11,34 @@ import IconInfo from '../assets/svg/icon_info.svg';
 import IconTel from '../assets/svg/icon_tel.svg';
 
 export const ListItem = (props) => {
-	const { name, tel, site, mail, payments, services, note, where, newEntry } = props;
+	const { name, tel, site, mail, payments, services, note, where, when, newEntry } = props;
 
 	const action = useContext(Action);
-	const encodedName = encodeURIComponent(name);
-	const searchUrl = `https://www.google.com/search?q=${encodedName}`;
-
 	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));
 
+  const getDay = () => {
+    let d = new Date();
+    let weekday = new Array(7);
+    weekday[0] = "dom";
+    weekday[1] = "lun";
+    weekday[2] = "mar";
+    weekday[3] = "mer";
+    weekday[4] = "gio";
+    weekday[5] = "ven";
+    weekday[6] = "sab";
+
+    let n = weekday[d.getDay()];
+    return n
+  }
+
+
+  const isOpenToday = () => {
+    let today = getDay()
+    return Boolean(when[today])
+  }
+
 	return (
-		<article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${newEntry ? "new-entry" : ""}`}>
+		<article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${isOpenToday() ? "" : "closed-today"}`}>
 
       <div onClick={(e) => {gtagEvent('custom_click','listing - '+name,'shop name'), action.setPopupNumbers(e, props)}} class="flex flex-auto justify-start items-center border border-vcd-black rounded px-2 py-3 md:p-4">
         <span class="text-sm md:text-base">{name}</span>
