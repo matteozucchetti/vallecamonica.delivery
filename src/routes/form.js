@@ -54,7 +54,7 @@ export default function Form() {
 
             <div class="w-full px-2 mb-10">
               <label>Dove consegni? (specifica qui i comuni in cui puoi effettuare le consegne)
-                <textarea class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" required type="text" name="delivery_city" />
+                <textarea class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" required type="text" name="delivery_city" placeholder="es. Edolo, Ponte di Legno, Darfo Boario Terme, Lovere" />
               </label>
             </div>
 
@@ -116,6 +116,21 @@ export default function Form() {
 
           <div class="flex flex-wrap border-b-2 border-vcd-rosa mt-10">
 
+            <div class="w-auto px-2 mb-10">
+              <label>Costo consegna
+                <input class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="text" name="delivery_fee" placeholder="es. 2€" />
+              </label>
+            </div>
+            <div class="w-auto px-2 mb-10">
+              <label>Ordine minimo
+                <input class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="text" name="min_order" placeholder="es. 10€" />
+              </label>
+            </div>
+
+          </div>
+
+          <div class="flex flex-wrap border-b-2 border-vcd-rosa mt-10">
+
             <div class="w-full px-2 mb-10">
               <label class="">Saresti interessato a mantenere attivo il servizio anche dopo il periodo di lockdown dovuto al COVID-19?
                 <div class="mt-4 text-xs flex justify-start items-center mx-auto flex-wrap">
@@ -145,7 +160,7 @@ export default function Form() {
 
             <div class="w-full px-2 mb-10">
               <label class="">Note
-                <textarea class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="text" name="note" style="height:150px" />
+                <textarea class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="text" name="note" style="height:150px" placeholder="es. Domenica solo a pranzo" />
               </label>
             </div>
 
