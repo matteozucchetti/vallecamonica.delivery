@@ -1,5 +1,8 @@
 import { Component, Fragment } from 'preact';
 
+// gtag
+import gtagEvent from '../utils/getBrandColor';
+
 // Images
 import IconInsta from '../assets/svg/insta.svg';
 
