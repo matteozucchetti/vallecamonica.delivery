@@ -87,7 +87,7 @@ export default class Home extends Component {
 
           <div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
             <Scrollchor to="#search-component" animate={{ duration: 600 }}>
-              <button onClick={() => { gtag('test action','test category','test label') }} class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
+              <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
             </Scrollchor>
             <Link href="/form">
               <button class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
