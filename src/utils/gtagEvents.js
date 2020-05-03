@@ -1,4 +1,4 @@
-export default function gtag(action, category, label) {
+export default function gtagEvent(action, category, label) {
 
     if (typeof dataLayer != 'undefined') {
         gtag('event', action, {

@@ -10,7 +10,7 @@ import InstaBadge from '../assets/svg/insta_profile.svg';
 import Deco from '../assets/svg/decoration.svg';
 
 // gtag
-import gtag from '../utils/gtagEvents.js';
+import gtagEvent from '../utils/gtagEvents.js';
 
 export default class Home extends Component {
 	state = {
@@ -90,7 +90,7 @@ export default class Home extends Component {
               <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
             </Scrollchor>
             <Link href="/form">
-              <button onClick={() => { gtag('test action','test category','test label') }} class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
+              <button onClick={() => { gtagEvent('test action','test category','test label') }} class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
             </Link>
           </div>
 
