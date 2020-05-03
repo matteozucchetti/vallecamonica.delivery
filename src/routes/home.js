@@ -90,7 +90,7 @@ export default class Home extends Component {
               <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
             </Scrollchor>
             <Link href="/form">
-              <button class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
+              <button onClick={() => { gtag('test action','test category','test label') }} class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
             </Link>
           </div>
 
