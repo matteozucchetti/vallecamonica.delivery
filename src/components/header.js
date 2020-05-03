@@ -17,6 +17,7 @@ export default class Header extends Component {
             target="_blank"
             rel="noopener noreferrer"
             class="text-xs text-white"
+            onClick={() => { gtagEvent('custom_click','header','click on instagram profile link') }}
           >vallecamonica_delivery
             <IconInsta />
           </a>

@@ -26,12 +26,12 @@ export default class Footer extends Component {
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="JDTBJFDUYHDB6" />
           <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
-          <button class="vcd-button w-full text-center md:w-auto mb-10" title="PayPal - The safer, easier way to pay online!" alt="Fai una donazione con il pulsante PayPal" type="submit">dona</button>
+          <button class="vcd-button w-full text-center md:w-auto mb-10" title="PayPal - The safer, easier way to pay online!" alt="Fai una donazione con il pulsante PayPal" onClick={() => { gtagEvent('custom_click','footer','click on dona') }} type="submit">dona</button>
           </form>
 
           <p class="mb-5 text-white">
             Developed with <IconCuore class="icon-heart" /> by
-            <a class="font-semibold" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>, design by <a class="font-semibold" href="https://www.linkedin.com/in/francesca-da-forno-55312a119/" target="_blank">Francesca Da Forno</a>
+            <a class="font-semibold" onClick={() => { gtagEvent('custom_click','footer','click on matteo') }} href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>, design by <a class="font-semibold" onClick={() => { gtagEvent('custom_click','footer','click on francesca') }} href="https://www.linkedin.com/in/francesca-da-forno-55312a119/" target="_blank">Francesca Da Forno</a>
           </p>
           <p class="mb-5 text-white">
             Special thanks to <span class="font-semibold">Matteo Bernardi</span>
@@ -40,6 +40,7 @@ export default class Footer extends Component {
             target="_blank"
             rel="noopener noreferrer"
             class="mb-5 text-xs block text-white"
+            onClick={() => { gtagEvent('custom_click','footer','click on github') }}
           >Based on <span class="underline">this</span> GitHub project</a>
           <p class="text-center text-white">
             <a href="https://www.iubenda.com/privacy-policy/19385130" class="iubenda-white iubenda-embed mx-2" title="Privacy Policy ">Privacy Policy</a>

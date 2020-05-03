@@ -52,24 +52,3 @@ input{
     @apply bg-white text-vcd-arancione;
   }
 }
-
-.vdc-infoButtons{
-  @apply flex justify-center items-center rounded border-b-4 p-2 ml-2;
-  width: 2.5rem;
-  @screen md {
-    @apply p-4;
-    width: 3.7rem;
-  }
-  &--info{
-    @apply border-vcd-azzurro-scuro bg-vcd-azzurro;
-    &:hover{
-      @apply border-b-2 border-t-2 border-vcd-azzurro;
-    }
-  }
-  &--tel{
-    @apply border-vcd-rosso bg-vcd-rosa;
-    &:hover{
-      @apply border-b-2 border-t-2 border-vcd-rosa;
-    }
-  }  
-}

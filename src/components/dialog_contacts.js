@@ -3,29 +3,32 @@ import { Fragment } from "preact";
 // Utils
 import cleanUrls from '../utils/cleanUrls'
 
+// gtag
+import gtagEvent from '../utils/gtagEvents.js';
+
 // Images
 import MailIcon from '../assets/svg/icon_mail.svg';
 import WebsiteIcon from '../assets/svg/icon_website.svg';
 import FacebookIcon from '../assets/svg/icon_facebook.svg';
 import TelIcon from '../assets/svg/icon_tel.svg';
 
-function Tel({tel}) {
+function Tel({tel, name}) {
 	const isArrayOfTel = Array.isArray(tel);
 
 	return ( isArrayOfTel
 		? tel.map((telNumber, i) => (
-			<a href={`tel:${telNumber}`} class="inline-block rounded-lg text-sm">
+			<a href={`tel:${telNumber}`} onClick={() => {gtagEvent('custom_click','dialog - '+name,'tel number')}} class="inline-block rounded-lg text-sm">
 				<span>{telNumber}</span>
 				{tel.length !== i+1 && <span class="mx-2">-</span>}
 			</a>
 		))
-		: <a href={`tel:${tel}`} class="inline-block rounded-lg text-sm">
+		: <a href={`tel:${tel}`} onClick={() => {gtagEvent('custom_click','dialog - '+name,'tel number')}} class="inline-block rounded-lg text-sm">
 			{tel}
 		</a>
 	);
 }
 
-export const D_Contacts = ({tel, mail, site}) => {
+export const D_Contacts = ({tel, mail, site, name}) => {
 	return (
 		<Fragment>
       <div class="vcd-dialogBox border-none">
@@ -39,12 +42,12 @@ export const D_Contacts = ({tel, mail, site}) => {
                   role="img"
                   aria-label="telephone"
                 />
-    						<Tel {...{tel}} />
+    						<Tel {...{tel, name}} />
     					</div>
     				)}
     				{site && (
     					<div class="text-center flex-1 mb-2">
-                <a href={site} target="_blank">
+                <a href={site} onClick={() => {gtagEvent('custom_click','dialog - '+name,'website')}} target="_blank">
       						<WebsiteIcon
                     class="w-4 h-4 mx-auto mb-2 contact-icon"
                     role="img"
@@ -56,7 +59,7 @@ export const D_Contacts = ({tel, mail, site}) => {
     				)}
     				{mail && (
     					<div class="text-center flex-1 mb-2">
-                <a href={`mailto:${mail}`}>
+                <a href={`mailto:${mail}`} onClick={() => {gtagEvent('custom_click','dialog - '+name,'email')}}>
       						<MailIcon
                     class="w-4 h-4 mx-auto mb-2 contact-icon"
                     role="img"

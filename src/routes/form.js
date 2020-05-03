@@ -5,12 +5,15 @@ import { Link } from 'preact-router/match';
 import LeftArrow from '../assets/svg/left_arrow.svg';
 import Deco from '../assets/svg/decoration.svg';
 
+// gtag
+import gtagEvent from '../utils/gtagEvents.js';
+
 export default function Form() {
 	return (
     <Fragment>
   		<div class="max-w-screen-lg mx-auto px-5">
 
-        <Link class="text-vcd-rosa text-xs md:text-sm" href="/"><LeftArrow />torna indietro</Link>
+        <Link onClick={() => { gtagEvent('custom_click','form','click on torna indietro') }} class="text-vcd-rosa text-xs md:text-sm" href="/"><LeftArrow />torna indietro</Link>
 
         <h2 className="text-center font-light text-vcd-rosa tracking-wide form-heading my-5 md:my-10">
           <span class="bg-white inline-block relative z-10 px-10 uppercase">AGGIUNGI LA TUA ATTIVITÀ</span>

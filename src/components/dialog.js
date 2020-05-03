@@ -61,7 +61,7 @@ export const Dialog = ({
             : null
           }
           {note && <D_Notes {...{note}} />}
-          <D_Contacts {...{tel, mail, site}} />
+          <D_Contacts {...{tel, mail, site, name}} />
 
           {/*
             {payments && <D_Payments {...{payments}} />}

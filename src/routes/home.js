@@ -28,6 +28,7 @@ export default class Home extends Component {
          return this.setState({ categoryFilter: null });
       }
       this.setState({ categoryFilter: key });
+      gtagEvent('custom_click','home','click on category filter '+key)
    };
 
 	filteredCategories(filter, categoryFilter) {
@@ -87,10 +88,18 @@ export default class Home extends Component {
 
           <div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
             <Scrollchor to="#search-component" animate={{ duration: 600 }}>
-              <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
+              <button
+                onClick={() => { gtagEvent('custom_click','home','click on cerca - scroll down') }}
+                class="vcd-button w-full text-center md:w-auto">
+                cerca nella tua zona
+              </button>
             </Scrollchor>
             <Link href="/form">
-              <button onClick={() => { gtagEvent('test action','test category','test label') }} class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
+              <button 
+                onClick={() => { gtagEvent('custom_click','home','click on aggiungi attività') }}
+                class="vcd-button vcd-button--rosa w-full text-center md:w-auto">
+                aggiungi un'attività
+              </button>
             </Link>
           </div>
 
@@ -150,6 +159,7 @@ export default class Home extends Component {
           <a href="https://www.instagram.com/vallecamonica_delivery/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => { gtagEvent('custom_click','home','click on instagram profile link') }}
           >
             <InstaBadge />
             <p class="text-xl md:text-2xl font-thin my-5">@vallecamonica_delivery</p>

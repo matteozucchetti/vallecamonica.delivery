@@ -4,6 +4,9 @@ import { Link } from 'preact-router/match';
 // Images
 import Deco from '../assets/svg/decoration.svg';
 
+// gtag
+import gtagEvent from '../utils/gtagEvents.js';
+
 export default function FormSuccess() {
 	return (
     <Fragment>
@@ -18,7 +21,11 @@ export default function FormSuccess() {
         <p class="mb-5">Non dimenticare di <b>condividere con i tuoi amici quest'app</b> per fare in modo che tutte le piccole attività e non, in Valle Camonica, siano presenti!</p>
 
         <Link href="/">
-          <button class="vcd-button w-full text-center md:w-auto mb-10">torna alla homepage</button>
+          <button
+            class="vcd-button w-full text-center md:w-auto mb-10"
+            onClick={() => { gtagEvent('custom_click','form/success','click on torna alla home') }}>
+            torna alla homepage
+          </button>
         </Link>
 
   		</div>
