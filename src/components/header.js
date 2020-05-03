@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'preact';
 
 // gtag
-import gtagEvent from '../utils/getBrandColor';
+import gtagEvent from '../utils/gtagEvent.js';
 
 // Images
 import IconInsta from '../assets/svg/insta.svg';
@@ -20,6 +20,7 @@ export default class Header extends Component {
             target="_blank"
             rel="noopener noreferrer"
             class="text-xs text-white"
+            onClick={() => { gtagEvent('test action','test category','test label') }}
           >vallecamonica_delivery
             <IconInsta />
           </a>
