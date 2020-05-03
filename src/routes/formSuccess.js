@@ -13,7 +13,7 @@ export default function FormSuccess() {
           <span class="bg-white inline-block relative z-10 px-10 uppercase">grazie per aver aggiunto la tua attività</span>
         </h2>
 
-        <p class="mb-5"><b>Abbiamo preso in carico la tua richiesta!</b><br />Normalmente la fase di approvazione richiede 24 ore.</p>
+        <p class="mb-5"><b>Abbiamo preso in carico la tua richiesta!</b><br />Normalmente la fase di approvazione richiede 24/48 ore.</p>
 
         <p class="mb-5">Non dimenticare di <b>condividere con i tuoi amici quest'app</b> per fare in modo che tutte le piccole attività e non, in Valle Camonica, siano presenti!</p>
 

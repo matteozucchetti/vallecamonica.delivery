@@ -12,8 +12,6 @@ export const ListItem = (props) => {
 
 	const action = useContext(Action);
 	const encodedName = encodeURIComponent(name);
-	// const encodedCity = encodeURIComponent(process.env.PREACT_APP_CITY);
-  const encodedCity = encodeURIComponent('Valle Camonica');
 	const searchUrl = `https://www.google.com/search?q=${encodedName}`;
 
 	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));

@@ -18,7 +18,8 @@ export default function Form() {
         <p class="mb-5 text-center"><b>Compila il form</b> qui sotto per <b>inviare la richiesta</b> e aggiungere la tua attività</p>
   			<form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
   				<p>
-  					<input type="hidden" name="form-name" value="contact" />
+  					<input type="hidden" aria-hidden="true" hidden name="form-name" value="contact" />
+            <input type="hidden" aria-hidden="true" hidden name="bot-field" />
   				</p>
 
 
