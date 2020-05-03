@@ -14,7 +14,7 @@ export const D_When = ({when}) => {
 
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.lun
+                when.lun === 'on' || when.lun === 1 || when.lun === true
                 ? "active"
                 : "inactive"
               }`} />
@@ -22,7 +22,7 @@ export const D_When = ({when}) => {
             </div>
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.mar
+                when.mar === 'on' || when.mar === 1 || when.mar === true
                 ? "active"
                 : "inactive"
               }`} />
@@ -30,7 +30,7 @@ export const D_When = ({when}) => {
             </div>
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.mer
+                when.mer === 'on' || when.mer === 1 || when.mer === true
                 ? "active"
                 : "inactive"
               }`} />
@@ -38,7 +38,7 @@ export const D_When = ({when}) => {
             </div>
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.gio
+                when.gio === 'on' || when.gio === 1 || when.gio === true
                 ? "active"
                 : "inactive"
               }`} />
@@ -46,7 +46,7 @@ export const D_When = ({when}) => {
             </div>
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.ven
+                when.ven === 'on' || when.ven === 1 || when.ven === true
                 ? "active"
                 : "inactive"
               }`} />
@@ -54,7 +54,7 @@ export const D_When = ({when}) => {
             </div>
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.sab
+                when.sab === 'on' || when.sab === 1 || when.sab === true
                 ? "active"
                 : "inactive"
               }`} />
@@ -62,7 +62,7 @@ export const D_When = ({when}) => {
             </div>
             <div class="flex-1 mx-5 mb-2 md:mb-0">
               <CheckIcon class={`day-check ${
-                when.dom
+                when.dom === 'on' || when.dom === 1 || when.dom === true
                 ? "active"
                 : "inactive"
               }`} />
