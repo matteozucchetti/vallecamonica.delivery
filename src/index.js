@@ -65,7 +65,7 @@ export default class App extends Component {
 					results: json,
 					resultBkp: json
 				});
-			});
+			});  
 	}
 
 	componentDidUpdate() {
