@@ -36,9 +36,9 @@ export const Dialog = ({
 			<div
 				class="w-full md:w-5/6 max-w-screen-lg shadow-lg bg-white vcdDialog-inner"
 			>
-				<div class="flex justify-center items-center bg-vcd-azzurro p-3 md:p-6 relative">
+				<div class="flex justify-start md:justify-center items-center bg-vcd-azzurro p-3 md:p-6 relative">
 
-					<h2 class="text-2xl font-bold text-white">{name}</h2>
+					<h2 class="text-2xl font-bold text-white pr-10 md:pr-0">{name}</h2>
 
 					<button
 						class="vcd-closeButton z-30"
