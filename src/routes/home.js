@@ -36,13 +36,13 @@ export default class Home extends Component {
 		const regexStore = new RegExp(`${filter}`, 'i');
     const regexCategory = new RegExp(`[${filter}]{${filter.length},}`, 'i');
 
-    let removedHidden = _.pickBy(results, function(value, key){
+    let removedHiddenCategories = _.pickBy(results, function(value, key){
       return value.hidden === false
     })
 
-		return Object.keys(removedHidden)
+		return Object.keys(removedHiddenCategories)
 			.filter(key => (categoryFilter ? categoryFilter === key : true))
-			.reduce((acc, key) => {
+      .reduce((acc, key) => {
         return (
           {
             ...acc,
@@ -52,11 +52,13 @@ export default class Home extends Component {
                ? results[key].data
                : results[key].data.filter(e =>
                     filter.length ? regexStore.test(e.where) || regexStore.test(e.name) : true
+                 ).filter(e =>
+                    !e.hidden === true
                  )
             }
           }
         );
-      }, {});
+      }, {})
 	}
 
   isEmptySearch(filteredStores) {
@@ -74,7 +76,7 @@ export default class Home extends Component {
     const isEmptySearch = this.isEmptySearch(filteredStores);
 
     let removedHidden = _.pickBy(stores, function(value, key){
-      return value.hidden === false
+      return !value.hidden === true
     })
 
 		return (
