@@ -1,7 +1,7 @@
 module.exports = {
 	theme: {
     fontFamily: {
-      'vcd': ['Poppins', 'sans-serif']
+      'vcd': ['Poppins', 'Arial', 'sans-serif']
     },
     extend: {
       colors: {

@@ -136,7 +136,7 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <div class="max-w-screen-lg mx-auto mt-10 px-5">
+        <div class="max-w-screen-lg mx-auto mt-10 px-2 md:px-5">
 				
   				
   				{

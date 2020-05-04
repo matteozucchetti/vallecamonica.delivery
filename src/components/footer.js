@@ -31,7 +31,27 @@ export default class Footer extends Component {
 
           <p class="mb-5 text-white">
             Developed with <IconCuore class="icon-heart" /> by
-            <a class="font-semibold" onClick={() => { gtagEvent('custom_click','footer','click on matteo') }} href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a>, design by <a class="font-semibold" onClick={() => { gtagEvent('custom_click','footer','click on francesca') }} href="https://www.linkedin.com/in/francesca-da-forno-55312a119/" target="_blank">Francesca Da Forno</a>
+            <a 
+              class="font-semibold"
+              onClick={() => { gtagEvent('custom_click','footer','click on matteo') }}
+              href={process.env.PREACT_APP_DEV_LINK}
+              rel="noopener"
+              rel="noreferrer"
+              target="_blank"
+            >
+              {process.env.PREACT_APP_DEV_NAME}
+            </a>
+            , design by 
+            <a
+              class="font-semibold"
+              onClick={() => { gtagEvent('custom_click','footer','click on francesca') }}
+              href="https://www.linkedin.com/in/francesca-da-forno-55312a119/"
+              rel="noopener"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Francesca Da Forno
+            </a>
           </p>
           <p class="mb-5 text-white">
             Special thanks to <span class="font-semibold">Matteo Bernardi</span>

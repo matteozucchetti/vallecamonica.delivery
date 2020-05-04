@@ -35,11 +35,11 @@ export const Dialog = ({
       id="popupDialog"
 		>
 			<div
-				class="w-full md:w-5/6 max-w-screen-lg shadow-lg bg-white vcdDialog-inner"
+				class="w-full md:w-5/6 max-w-screen-lg shadow-lg bg-white vcdDialog-inner mb-10 pb-10 border-b-8 border-vcd-rosa"
 			>
 				<div class="flex justify-start md:justify-center items-center bg-vcd-azzurro p-3 md:p-6 relative">
 
-					<h2 class="text-2xl font-bold text-white pr-10 md:pr-0">{name}</h2>
+					<h2 class="text-2xl font-bold text-white pr-10 md:pr-0 leading-tight">{name}</h2>
 
 					<button
 						class="vcd-closeButton z-30"
@@ -48,7 +48,7 @@ export const Dialog = ({
 
 				</div>
 
-        <div class="px-3 md:px-6 relative border-b-8 border-vcd-rosa">
+        <div class="px-3 md:px-6 relative">
 
           {where && <D_Where {...{where}} />}
           {when && <D_When {...{when}} />}
