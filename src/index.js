@@ -1,6 +1,7 @@
 import { h, Component, createContext } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import './assets/styles/global.css';
 
@@ -32,6 +33,8 @@ export default class App extends Component {
 		isPopupOpen: false,
 		popupData: {},
 	}
+
+  targetElement = null;
 	
 	handleRoute = e => {
 		this.currentUrl = e.url;
@@ -40,6 +43,8 @@ export default class App extends Component {
 
 	setPopupNumbers = (e, popupData) => {
 		e.preventDefault();
+
+    disableBodyScroll(this.targetElement);
 
 		this.setState({
 			popupData,
@@ -51,13 +56,16 @@ export default class App extends Component {
 		if (e.currentTarget === e.target) {      
 			this.setState({ isPopupOpen: false })
 		}
+    enableBodyScroll(this.targetElement);
 	}
 
   closePopupFromButton = (e) => {
     this.setState({ isPopupOpen: false })
+    enableBodyScroll(this.targetElement);
   }
 
 	componentDidMount() {
+    this.targetElement = document.querySelector('#popupDialog');
 		fetch(`${process.env.PREACT_APP_DATA_SOURCE}?c=${Math.random().toString(36).split('.')[1]}`)
 			.then(r => r.json())
 			.then(json => {
@@ -69,11 +77,13 @@ export default class App extends Component {
 	}
 
 	componentDidUpdate() {
-		const { isPopupOpen } = this.state;
-		
+		const { isPopupOpen } = this.state;		
 		const root = document.documentElement;
-		root.style.setProperty('--popup-visible', isPopupOpen ? 'hidden': 'initial')
 	}
+
+  componentWillUnmount() {
+    clearAllBodyScrollLocks();
+  }
 
 	render(props, { isHomepage, results, popupData, isPopupOpen }) {
 		return (
@@ -90,7 +100,7 @@ export default class App extends Component {
 					</Router>       
 				</div>
         <Footer />
-				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...popupData} />
+				<Dialog id="popupDialog" isOpen={isPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>
 		);
