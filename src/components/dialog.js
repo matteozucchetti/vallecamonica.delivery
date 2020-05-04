@@ -32,6 +32,7 @@ export const Dialog = ({
 			class="fixed inset-x-0 top-0 backdrop w-screen h-screen z-20 vcdDialog overflow-y-scroll overflow-x-hidden"
 			style={{display: isOpen ? "initial" : "none"}}
       onClick={closePopup}
+      id="popupDialog"
 		>
 			<div
 				class="w-full md:w-5/6 max-w-screen-lg shadow-lg bg-white vcdDialog-inner"

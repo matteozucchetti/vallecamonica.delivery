@@ -44,8 +44,6 @@ export default class App extends Component {
 	setPopupNumbers = (e, popupData) => {
 		e.preventDefault();
 
-    disableBodyScroll(this.targetElement);
-
 		this.setState({
 			popupData,
 			isPopupOpen: true
@@ -56,16 +54,16 @@ export default class App extends Component {
 		if (e.currentTarget === e.target) {      
 			this.setState({ isPopupOpen: false })
 		}
-    enableBodyScroll(this.targetElement);
 	}
 
   closePopupFromButton = (e) => {
     this.setState({ isPopupOpen: false })
-    enableBodyScroll(this.targetElement);
   }
 
 	componentDidMount() {
+
     this.targetElement = document.querySelector('#popupDialog');
+
 		fetch(`${process.env.PREACT_APP_DATA_SOURCE}?c=${Math.random().toString(36).split('.')[1]}`)
 			.then(r => r.json())
 			.then(json => {
@@ -77,8 +75,8 @@ export default class App extends Component {
 	}
 
 	componentDidUpdate() {
-		const { isPopupOpen } = this.state;		
-		const root = document.documentElement;
+		const { isPopupOpen } = this.state;
+    isPopupOpen ? disableBodyScroll(this.targetElement) : enableBodyScroll(this.targetElement);
 	}
 
   componentWillUnmount() {
@@ -100,7 +98,7 @@ export default class App extends Component {
 					</Router>       
 				</div>
         <Footer />
-				<Dialog id="popupDialog" isOpen={isPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...popupData} />
+				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...popupData} />
 				<PWAPrompt />
 			</Action.Provider>
 		);
