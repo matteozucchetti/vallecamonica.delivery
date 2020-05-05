@@ -36,11 +36,7 @@ export default class Home extends Component {
 		const regexStore = new RegExp(`${filter}`, 'i');
     const regexCategory = new RegExp(`[${filter}]{${filter.length},}`, 'i');
 
-    let removedHiddenCategories = _.pickBy(results, function(value, key){
-      return value.hidden === false
-    })
-
-		return Object.keys(removedHiddenCategories)
+		return Object.keys(results)
 			.filter(key => (categoryFilter ? categoryFilter === key : true))
       .reduce((acc, key) => {
         return (
@@ -74,10 +70,6 @@ export default class Home extends Component {
 		const { results: stores } = props;
 		const filteredStores = this.filteredCategories(filter, categoryFilter)
     const isEmptySearch = this.isEmptySearch(filteredStores);
-
-    let removedHidden = _.pickBy(stores, function(value, key){
-      return !value.hidden === true
-    })
 
 		return (
 			<Fragment>
@@ -120,7 +112,7 @@ export default class Home extends Component {
             />
             <p class="text-white mb-4">Filtra per categoria</p>
             <div class="flex overflow-x-scroll md:overflow-x-visible md:flex-wrap md:justify-center">
-              {Object.keys(removedHidden).map(key => (
+              {Object.keys(stores).map(key => (
                 <button
                   onClick={this.handleCategoryFilter(key)}
                   class={`vcd-category-button mx-2 mb-2 flex-grow-0 flex-shrink-0 ${

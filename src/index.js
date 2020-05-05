@@ -5,9 +5,6 @@ import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'bo
 
 import './assets/styles/global.css';
 
-// Lodash 
-let _ = require('lodash');
-
 // Routes
 import Home from './routes/home';
 import Form from './routes/form';
