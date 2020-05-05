@@ -1,4 +1,8 @@
 module.exports = {
+  purge: [
+    './src/**/*.html',
+    './src/**/*.js',
+  ],
 	theme: {
     fontFamily: {
       'vcd': ['Poppins', 'Arial', 'sans-serif']
@@ -14,4 +18,4 @@ module.exports = {
       }
     }
 	}
- }
+}

@@ -8,7 +8,6 @@ module.exports = {
         require('postcss-conditionals'),
         require('postcss-simple-vars'),
         require('postcss-nested'),
-        require('autoprefixer'),
-        
+        require('autoprefixer')
     ],
 };

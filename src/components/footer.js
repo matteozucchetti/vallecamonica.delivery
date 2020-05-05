@@ -38,9 +38,7 @@ export default class Footer extends Component {
               rel="noopener"
               rel="noreferrer"
               target="_blank"
-            >
-              {process.env.PREACT_APP_DEV_NAME}
-            </a>
+            > {process.env.PREACT_APP_DEV_NAME}</a>
             , design by 
             <a
               class="font-semibold"
@@ -49,9 +47,7 @@ export default class Footer extends Component {
               rel="noopener"
               rel="noreferrer"
               target="_blank"
-            >
-              Francesca Da Forno
-            </a>
+            > Francesca Da Forno</a>
           </p>
           <p class="mb-5 text-white">
             Special thanks to <span class="font-semibold">Matteo Bernardi</span>
