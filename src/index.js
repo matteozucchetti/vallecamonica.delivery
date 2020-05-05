@@ -3,9 +3,6 @@ import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-// Load Poppins typeface
-require('typeface-poppins')
-
 import './assets/styles/global.css';
 
 // Routes
