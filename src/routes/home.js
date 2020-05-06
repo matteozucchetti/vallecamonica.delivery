@@ -5,6 +5,13 @@ import Scrollchor from "preact-scrollchor"
 
 import { ListCategory } from '../components/listCategory';
 
+// Images
+import InstaBadge from '../assets/svg/insta_profile.svg';
+import Deco from '../assets/svg/decoration.svg';
+
+// gtag
+import gtagEvent from '../utils/gtagEvents.js';
+
 export default class Home extends Component {
 	state = {
 		filter: '',
@@ -21,6 +28,7 @@ export default class Home extends Component {
          return this.setState({ categoryFilter: null });
       }
       this.setState({ categoryFilter: key });
+      gtagEvent('custom_click','home','click on category filter '+key)
    };
 
 	filteredCategories(filter, categoryFilter) {
@@ -30,21 +38,23 @@ export default class Home extends Component {
 
 		return Object.keys(results)
 			.filter(key => (categoryFilter ? categoryFilter === key : true))
-			.reduce((acc, key) => {
+      .reduce((acc, key) => {
         return (
           {
             ...acc,
             [key]: {
-              icon: results[key].icon,
+              hidden: results[key].hidden,
               data: regexCategory.test(key)
                ? results[key].data
                : results[key].data.filter(e =>
                     filter.length ? regexStore.test(e.where) || regexStore.test(e.name) : true
+                 ).filter(e =>
+                    !e.hidden === true
                  )
             }
           }
         );
-      }, {});
+      }, {})
 	}
 
   isEmptySearch(filteredStores) {
@@ -56,6 +66,7 @@ export default class Home extends Component {
   }
 
 	render(props, { filter, categoryFilter }) {
+
 		const { results: stores } = props;
 		const filteredStores = this.filteredCategories(filter, categoryFilter)
     const isEmptySearch = this.isEmptySearch(filteredStores);
@@ -66,25 +77,31 @@ export default class Home extends Component {
         <div class="max-w-screen-lg mx-auto px-5">
 
           <h2 class="text-center font-thin">Scopri quali attività effettuano consegne a domicilio in Valle Camonica.</h2>
-          <h2 class="text-center font-semibold">Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>  
-
-          <h3 class="text-center font-thin text-vcd-arancione mt-10 tracking-wide text-3xl">COMING SOON</h3>
+          <h2 class="text-center font-semibold">Ristoranti, pizzerie, bar e negozi direttamente a casa!</h2>
 
 
-          {/*<div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
+          <div class="flex flex-wrap justify-center items-center mt-10 homepage-buttons-container">
             <Scrollchor to="#search-component" animate={{ duration: 600 }}>
-              <button class="vcd-button w-full text-center md:w-auto">cerca nella tua zona</button>
+              <button
+                onClick={() => { gtagEvent('custom_click','home','click on cerca - scroll down') }}
+                class="vcd-button w-full text-center md:w-auto">
+                cerca nella tua zona
+              </button>
             </Scrollchor>
             <Link href="/form">
-              <button class="vcd-button vcd-button--rosa w-full text-center md:w-auto">aggiungi un'attività</button>
+              <button 
+                onClick={() => { gtagEvent('custom_click','home','click on aggiungi attività') }}
+                class="vcd-button vcd-button--rosa w-full text-center md:w-auto">
+                aggiungi un'attività
+              </button>
             </Link>
-          </div>*/}
+          </div>
 
 
 
         </div>
 
-        {/*<div class="bg-vcd-arancione mt-10 py-10 w-full" id="search-component">
+        <div class="bg-vcd-arancione mt-10 py-10 w-full" id="search-component">
           <div class="max-w-screen-lg mx-auto text-center px-5">
             <p class="text-white mb-4">Inserisci il nome del paese o dell'attività che stai cercando</p>
             <input
@@ -94,11 +111,11 @@ export default class Home extends Component {
               onInput={this.handleChangeFilter}
             />
             <p class="text-white mb-4">Filtra per categoria</p>
-            <div class="flex justify-center items-center">
+            <div class="flex overflow-x-scroll md:overflow-x-visible md:flex-wrap md:justify-center">
               {Object.keys(stores).map(key => (
                 <button
                   onClick={this.handleCategoryFilter(key)}
-                  class={`vcd-category-button mx-2 ${
+                  class={`vcd-category-button mx-2 mb-2 flex-grow-0 flex-shrink-0 ${
                     key === categoryFilter
                       ? "vcd-category-button--pressed"
                       : ""
@@ -111,7 +128,7 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <div class="max-w-screen-lg mx-auto mt-10 px-5">
+        <div class="max-w-screen-lg mx-auto mt-10 px-2 md:px-5">
 				
   				
   				{
@@ -129,7 +146,23 @@ export default class Home extends Component {
               <span class="my-5 block">Oops! Non abbiamo trovato risultati corrispondenti alla tua ricerca.</span>
             )}
 
-        </div>*/}
+        </div>
+
+        <div class="w-full mx-auto px-5 pb-10 text-center relative" id="insta-component">
+          
+          <a href="https://www.instagram.com/vallecamonica_delivery/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => { gtagEvent('custom_click','home','click on instagram profile link') }}
+          >
+            <InstaBadge />
+            <p class="text-xl md:text-2xl font-thin my-5">@vallecamonica_delivery</p>
+            <p class="font-thin mb-5">Seguici su Instagram<br />per rimanere sempre aggiornato sulle ultime novità</p>
+            <button class="vcd-button w-full text-center md:w-auto">seguici</button>
+          </a>
+          <Deco className="hidden md:block deco deco--left" />
+          <Deco className="hidden md:block deco deco--right" />
+        </div>
         
 			</Fragment>
 		);

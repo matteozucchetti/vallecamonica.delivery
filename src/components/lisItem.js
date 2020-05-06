@@ -1,68 +1,73 @@
 import { useContext } from 'preact/hooks';
 
 // Actions
-import { Action } from '../index'
+import { Action } from '../index';
+
+// gtag
+import gtagEvent from '../utils/gtagEvents.js';
+
+// Images
+import IconInfo from '../assets/svg/icon_info.svg';
+import IconTel from '../assets/svg/icon_tel.svg';
 
 export const ListItem = (props) => {
-	const { name, tel, site, mail, payments, services, note, where, newEntry } = props;
+	const { name, tel, site, mail, payments, services, note, where, when, newEntry } = props;
 
 	const action = useContext(Action);
-	const encodedName = encodeURIComponent(name);
-	// const encodedCity = encodeURIComponent(process.env.PREACT_APP_CITY);
-  const encodedCity = encodeURIComponent('Valle Camonica');
-	const searchUrl = `https://www.google.com/search?q=${encodedName}`;
-
 	const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));
 
+  const getDay = () => {
+    let d = new Date();
+    let weekday = new Array(7);
+    weekday[0] = "dom";
+    weekday[1] = "lun";
+    weekday[2] = "mar";
+    weekday[3] = "mer";
+    weekday[4] = "gio";
+    weekday[5] = "ven";
+    weekday[6] = "sab";
+
+    let n = weekday[d.getDay()];
+    return n
+  }
+
+
+  const isOpenToday = () => {
+    let today = getDay()
+    return Boolean(when[today])
+  }
+
 	return (
-		<article onClick={(e) => action.setPopupNumbers(e, props)} class={`relative cursor-pointer border border-teal-500 p-4 my-5 ${newEntry ? "new-entry" : ""}`}>
-			<div class="flex justify-between items-center">
-				<span>{name}</span>				
-				<div class="flex">
-					{isInfoVisible && 
+		<article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${isOpenToday() ? "" : "closed-today"}`}>
+
+      <div onClick={(e) => {gtagEvent('custom_click','listing - '+name,'shop name'), action.setPopupNumbers(e, props)}} class="flex flex-auto justify-start items-center border border-vcd-black rounded px-2 py-3 md:p-4">
+        <span class="text-sm md:text-base">{name}</span>
+      </div>
+
+      {isInfoVisible && 
+  			<div onClick={(e) => {gtagEvent('custom_click','listing - '+name,'info icon'), action.setPopupNumbers(e, props)}} class="vdc-infoButtons vdc-infoButtons--info">  				
+  					<span
+  						role="img"
+  						aria-label="more info"
+  					><IconInfo width="100%" fill="#fff" />
+  					</span>
+        </div>
+      }
+
+      {tel && (
+        <div class="vdc-infoButtons vdc-infoButtons--tel">
+					<a href={`tel:${tel}`} onClick={
+            (e) => {gtagEvent('custom_click','listing - '+name,'tel icon'), tel.length > 1 && action.setPopupNumbers(e, props)}
+          }>
 						<span
-							class="inline-block mx-1 cursor-pointer text-center"
 							role="img"
-							aria-label="more info"
-						>
-							ℹ️
+							aria-label="telephone"
+						><IconTel width="100%" fill="#fff" />
 						</span>
-					}
-					{mail && !site && !tel && (
-						<a href={`mailto:${mail}`}>
-							<span
-								class="inline-block mx-1 cursor-pointer text-center"
-								role="img"
-								aria-label="mail"
-							>
-							✉️
-							</span>
-						</a>
-					)}
-					{site && !tel && (
-						<a href={`${site}`}>
-							<span
-								class="inline-block mx-1 cursor-pointer text-center"
-								role="img"
-								aria-label="website"
-							>
-							🌐
-							</span>
-						</a>
-					)}
-					{tel && (
-						<a href={`tel:${tel}`} onClick={(e) => Array.isArray(tel) && action.setPopupNumbers(e, props)}>
-							<span
-								class="inline-block mx-1 cursor-pointer text-center"
-								role="img"
-								aria-label="telephone"
-							>
-							📞
-							</span>
-						</a>
-					)}
-				</div>
-			</div>
+					</a>
+			 </div>
+      )}
+
     </article>
 	);
 };

@@ -1,46 +1,71 @@
 import { Component, Fragment } from 'preact';
 
+// Images
+import IconCuore from '../assets/svg/cuore.svg';
+import Montagna1 from '../assets/svg/montagne1.svg';
+import Montagna2 from '../assets/svg/montagne2.svg';
+
 export default class Footer extends Component {  
   
   componentDidMount(){
-    const script = document.createElement("script");
-    script.innerHTML = `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`;
-    script.async = true;
+    const script1 = document.createElement("script");
+    script1.innerHTML = `(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`;
+    script1.async = true;
     const footer = this.base;
-    footer.appendChild(script);
+    footer.appendChild(script1);
   }
   
   render(){
     return (
       <Fragment>
-        <div class="px-5 max-w-screen-lg mx-auto text-center vcd-footer pb-10">
-          <p class="mb-5">
-            Developed with ❤️ by
-            <a class="text-vcd-azzurro" href={process.env.PREACT_APP_DEV_LINK}> {process.env.PREACT_APP_DEV_NAME}</a> and <a class="text-vcd-azzurro" href="https://www.linkedin.com/in/francesca-da-forno-55312a119/" target="_blank">Francesca Da Forno</a>, special thanks to Matteo Bernardi
+        <div class="w-full text-center vcd-footer py-10 px-5 bg-vcd-rosa border-b-8 border-vcd-azzurro relative">
+
+          <p class="mb-5 text-white">Se la nostra app ti piace, fai una donazione per supportarci!</p>
+
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="JDTBJFDUYHDB6" />
+          <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
+          <button class="vcd-button w-full text-center md:w-auto mb-10" title="PayPal - The safer, easier way to pay online!" alt="Fai una donazione con il pulsante PayPal" onClick={() => { gtagEvent('custom_click','footer','click on dona') }} type="submit">dona</button>
+          </form>
+
+          <p class="mb-5 text-white">
+            Developed with <IconCuore class="icon-heart" /> by
+            <a 
+              class="font-semibold"
+              onClick={() => { gtagEvent('custom_click','footer','click on matteo') }}
+              href={process.env.PREACT_APP_DEV_LINK}
+              rel="noopener"
+              rel="noreferrer"
+              target="_blank"
+            > {process.env.PREACT_APP_DEV_NAME}</a>
+            , design by 
+            <a
+              class="font-semibold"
+              onClick={() => { gtagEvent('custom_click','footer','click on francesca') }}
+              href="https://www.linkedin.com/in/francesca-da-forno-55312a119/"
+              rel="noopener"
+              rel="noreferrer"
+              target="_blank"
+            > Francesca Da Forno</a>
           </p>
-          <a href="https://www.instagram.com/vallecamonica_delivery/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mb-5 text-xs block hover:underline text-vcd-azzurro"
-          >Visita la nostra pagina Instagram</a>
+          <p class="mb-5 text-white">
+            Special thanks to <span class="font-semibold">Matteo Bernardi</span>
+          </p>
           <a href="https://github.com/tomma5o/domicilioBoilerplate"
             target="_blank"
             rel="noopener noreferrer"
-            class="mb-5 text-xs block hover:underline"
-          >Based on this GitHub project</a>
-          <p class="text-center">
-            <a href="https://www.iubenda.com/privacy-policy/19385130" class="iubenda-white iubenda-embed" title="Privacy Policy ">Privacy Policy</a>
-            <a href="https://www.iubenda.com/privacy-policy/19385130/cookie-policy" class="iubenda-white iubenda-embed" title="Cookie Policy ">Cookie Policy</a>
+            class="mb-5 text-xs block text-white"
+            onClick={() => { gtagEvent('custom_click','footer','click on github') }}
+          >Based on <span class="underline">this</span> GitHub project</a>
+          <p class="text-center text-white">
+            <a href="https://www.iubenda.com/privacy-policy/19385130" class="iubenda-white iubenda-embed mx-2" title="Privacy Policy ">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/19385130/cookie-policy" class="iubenda-white iubenda-embed mx-2" title="Cookie Policy ">Cookie Policy</a>
           </p>
-          {/*<p class="text-center pb-2 text-xs block text-gray-500">
-            Se vuoi supportarci, fai una donazione
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input type="hidden" name="hosted_button_id" value="QP2S2PSUTXZE6" />
-              <input type="image" src="https://placehold.it/100x30" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Fai una donazione con il pulsante PayPal" />
-              <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
-            </form>
-          </p>*/}
+
+          <Montagna1 className="hidden md:block deco deco--left" />
+          <Montagna2 className="hidden md:block deco deco--right" />
+
         </div>      
       </Fragment>
     );

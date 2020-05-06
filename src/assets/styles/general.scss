@@ -6,23 +6,5 @@ html{
 
 body {
   background-color: #fff;
-}
-
-.icon-insta{
-  width: 1rem;
-  height: 1rem;
-  display: inline-block;
-  @apply mx-2;
-  path{
-    fill: #fff;
-  }
-}
-
-.homepage-buttons-container{
-  a{
-    @apply w-full mb-2;
-    @screen md {
-      @apply w-auto mx-2;
-    }
-  }
+  position: relative;
 }

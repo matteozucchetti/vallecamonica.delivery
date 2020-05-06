@@ -6,3 +6,5 @@ node_modules
 size-plugin.json
 data
 .gitmodules
+# Local Netlify folder
+.netlify

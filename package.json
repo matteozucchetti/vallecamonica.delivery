@@ -21,6 +21,7 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.2",
     "all-contributors-cli": "^6.14.1",
     "autoprefixer": "^9.7.6",
     "copy-webpack-plugin": "^5.1.1",
@@ -36,14 +37,19 @@
     "tailwindcss": "^1.2.0"
   },
   "dependencies": {
+    "body-scroll-lock": "^3.0.2",
     "lodash": "^4.17.15",
+    "postcss-conditionals": "^2.1.0",
     "postcss-import": "^12.0.1",
+    "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",
+    "postcss-simple-vars": "^5.0.2",
     "preact": "^10.3.2",
     "preact-cli-svg-loader": "^1.1.0",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
     "preact-scrollchor": "^4.4.0",
-    "react-ios-pwa-prompt": "^1.7.0"
+    "react-ios-pwa-prompt": "^1.7.0",
+    "typeface-poppins": "0.0.72"
   }
 }
