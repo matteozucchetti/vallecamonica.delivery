@@ -19,7 +19,7 @@ export default function Form() {
           <span class="bg-white inline-block relative z-10 px-10 uppercase">AGGIUNGI LA TUA ATTIVITÀ</span>
         </h2>
         <p class="mb-5 text-center"><b>Compila il form</b> qui sotto per <b>inviare la richiesta</b> e aggiungere la tua attività</p>
-  			<form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success/">
+  			<form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success">
         
   				<input type="hidden" aria-hidden="true" name="form-name" value="contact" />
           <input type="hidden" aria-hidden="true" name="bot-field" />
@@ -32,7 +32,7 @@ export default function Form() {
             </div>
 
             <div class="w-full md:w-1/2 px-2 mb-5">
-              <input class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="text" inputmode="numeric" name="telephone" placeholder="Numero di telefono" />
+              <input class="bg-white border border-gray-500 py-2 px-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="tel" inputmode="numeric" name="telephone" placeholder="Numero di telefono" />
             </div>
 
           </div>
