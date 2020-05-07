@@ -5,6 +5,9 @@ import IconCuore from '../assets/svg/cuore.svg';
 import Montagna1 from '../assets/svg/montagne1.svg';
 import Montagna2 from '../assets/svg/montagne2.svg';
 
+// gtag
+import gtagEvent from '../utils/gtagEvents.js';
+
 export default class Footer extends Component {  
   
   componentDidMount(){
