@@ -160,8 +160,8 @@ export default class Home extends Component {
             <p class="font-thin mb-5">Seguici su Instagram<br />per rimanere sempre aggiornato sulle ultime novità</p>
             <button class="vcd-button w-full text-center md:w-auto">seguici</button>
           </a>
-          <Deco className="hidden md:block deco deco--left" />
-          <Deco className="hidden md:block deco deco--right" />
+          <Deco className="hidden lg:block deco deco--left" />
+          <Deco className="hidden lg:block deco deco--right" />
         </div>
         
 			</Fragment>

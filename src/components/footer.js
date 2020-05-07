@@ -26,7 +26,7 @@ export default class Footer extends Component {
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="JDTBJFDUYHDB6" />
           <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
-          <button class="vcd-button w-full text-center md:w-auto mb-10" title="PayPal - The safer, easier way to pay online!" alt="Fai una donazione con il pulsante PayPal" onClick={() => { gtagEvent('custom_click','footer','click on dona') }} type="submit">dona</button>
+          <button class="vcd-button vcd-button--white w-full text-center md:w-auto mb-10" title="Fai una donazione con il pulsante PayPal!" alt="Fai una donazione con il pulsante PayPal" onClick={() => { gtagEvent('custom_click','footer','click on dona') }} type="submit">dona</button>
           </form>
 
           <p class="mb-5 text-white">
@@ -63,8 +63,8 @@ export default class Footer extends Component {
             <a href="https://www.iubenda.com/privacy-policy/19385130/cookie-policy" class="iubenda-white iubenda-embed mx-2" title="Cookie Policy ">Cookie Policy</a>
           </p>
 
-          <Montagna1 className="hidden md:block deco deco--left" />
-          <Montagna2 className="hidden md:block deco deco--right" />
+          <Montagna1 className="hidden lg:block deco deco--left" />
+          <Montagna2 className="hidden lg:block deco deco--right" />
 
         </div>      
       </Fragment>

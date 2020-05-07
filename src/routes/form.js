@@ -176,8 +176,8 @@ export default function Form() {
   			</form>        
 
   		</div>
-      <Deco className="hidden md:block deco deco--left" />
-      <Deco className="hidden md:block deco deco--right" />
+      <Deco className="hidden lg:block deco deco--left" />
+      <Deco className="hidden lg:block deco deco--right" />
     </Fragment>
 	);
 }
