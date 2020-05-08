@@ -40,12 +40,12 @@ export const ListItem = (props) => {
 	return (
 		<article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${isOpenToday() ? "" : "closed-today"}`}>
 
-      <div onClick={(e) => {gtagEvent('custom_click','listing - '+name,'shop name'), action.setPopupNumbers(e, props)}} class="flex flex-auto justify-start items-center border border-vcd-black rounded px-2 py-3 md:p-4">
+      <div onClick={(e) => {gtagEvent('custom_click','listing - shop name',name), action.setPopupNumbers(e, props)}} class="flex flex-auto justify-start items-center border border-vcd-black rounded px-2 py-3 md:p-4">
         <span class="text-sm md:text-base">{name}</span>
       </div>
 
       {isInfoVisible && 
-  			<div onClick={(e) => {gtagEvent('custom_click','listing - '+name,'info icon'), action.setPopupNumbers(e, props)}} class="vdc-infoButtons vdc-infoButtons--info">  				
+  			<div onClick={(e) => {gtagEvent('custom_click','listing - info icon',name), action.setPopupNumbers(e, props)}} class="vdc-infoButtons vdc-infoButtons--info">  				
   					<span
   						role="img"
   						aria-label="more info"
@@ -57,7 +57,7 @@ export const ListItem = (props) => {
       {tel && (
         <div class="vdc-infoButtons vdc-infoButtons--tel">
 					<a href={`tel:${tel}`} onClick={
-            (e) => {gtagEvent('custom_click','listing - '+name,'tel icon'), tel.length > 1 && action.setPopupNumbers(e, props)}
+            (e) => {gtagEvent('custom_click','listing - tel icon',name), tel.length > 1 && action.setPopupNumbers(e, props)}
           }>
 						<span
 							role="img"
