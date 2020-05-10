@@ -161,6 +161,7 @@ export default function Form() {
               <label class="">Note
                 <textarea class="bg-white border border-gray-500 py-2 px-4 mt-4 block w-full appearance-none leading-normal text-xs sm:text-base rounded" type="text" name="note" style="height:150px" placeholder="es. Domenica solo a pranzo" />
               </label>
+              <p class="mt-5 text-xs">Inviando la richiesta confermi di di aver letto e accettato la nostra <a target="_blank" class="underline" href="https://www.iubenda.com/privacy-policy/19385130">Privacy Policy</a>.</p>
             </div>
 
           </div>
