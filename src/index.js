@@ -86,7 +86,7 @@ export default class App extends Component {
         <Header />
 				<div id="app" class="relative">
           <div class="max-w-screen-lg mx-auto">
-            <VcdLogo class="w-4/6 md:w-1/2 mx-auto my-10 main-logo" />
+            <Link href="/"><VcdLogo class="w-4/6 md:w-1/2 mx-auto my-10 main-logo" /></Link>
           </div>
 					<Router onChange={this.handleRoute}>
 						<Home path="/" results={results} />
