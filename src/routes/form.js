@@ -13,42 +13,38 @@ import gtagEvent from '../utils/gtagEvents.js';
 
 export default class Form extends Component {
 
-   state = {
-      actualJson: null,
-      loading: false
-   };
+   // state = {
+   //    actualJson: null,
+   //    loading: false
+   // };
 
-   componentDidMount() {
+   // componentDidMount() {
 
-      const options = {
-         headers: { 'Authorization': 'token 5a4ba7aec1683be583bead6415e078f0b088911b' }
-      };
+   //    const options = {
+   //       headers: { 'Authorization': 'token 5a4ba7aec1683be583bead6415e078f0b088911b' }
+   //    };
 
-      
+   // }
 
+   // handleSubmit = (e) => {
+   //    // e.preventDefault()
+   //    const form = document.getElementById('theForm');
+   //    let isValidForm = form.checkValidity();
+   //    isValidForm ? this.submitForm(e) : false
+   // }
 
-
-   }
-
-   handleSubmit = (e) => {
-      // e.preventDefault()
-      const form = document.getElementById('theForm');
-      let isValidForm = form.checkValidity();
-      isValidForm ? this.submitForm(e) : false
-   }
-
-   submitForm = (e) => {
-      e.preventDefault()
-      // this.setState({ loading: true }, () => {
-      //    axios.get('https://api.github.com/gists/e890d1b86e83ab190d3b1273da857e67', {}, options)
-      //       .then((response) => {
-      //          let resp = Object.values(response.data.files)[0].content;
-      //          this.setState({ actualJson: resp, loading: false });
-      //       }, (error) => {
-      //          console.log(error);
-      //       });
-      // })
-   }
+   // submitForm = (e) => {
+   //    // e.preventDefault()
+   //    // this.setState({ loading: true }, () => {
+   //    //    axios.get('https://api.github.com/gists/e890d1b86e83ab190d3b1273da857e67', {}, options)
+   //    //       .then((response) => {
+   //    //          let resp = Object.values(response.data.files)[0].content;
+   //    //          this.setState({ actualJson: resp, loading: false });
+   //    //       }, (error) => {
+   //    //          console.log(error);
+   //    //       });
+   //    // })
+   // }
 
    render() {
       return (
@@ -223,7 +219,7 @@ export default class Form extends Component {
                   <div class="flex flex-wrap">
 
                      <div class="w-full text-center px-2 mb-10">
-                        <button class="vcd-button w-full text-center md:w-auto" type="submit" onClick={(e) => this.handleSubmit(e)}>invia richiesta</button>
+                        <button class="vcd-button w-full text-center md:w-auto" type="submit">invia richiesta</button>
                      </div>
 
                   </div>
