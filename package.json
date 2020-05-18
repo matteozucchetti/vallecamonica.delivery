@@ -37,6 +37,7 @@
     "tailwindcss": "^1.2.0"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "body-scroll-lock": "^3.0.2",
     "lodash": "^4.17.15",
     "postcss-conditionals": "^2.1.0",
