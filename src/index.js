@@ -9,7 +9,6 @@ import './assets/styles/global.css';
 import Home from './routes/home';
 import Form from './routes/form';
 import FormSuccess from './routes/formSuccess';
-// import ApiTest from './routes/_apitest';
 
 // Components
 import Header from './components/header';
@@ -92,7 +91,6 @@ export default class App extends Component {
 						<Home path="/" results={results} />
 						<Form path="/form" />
 						<FormSuccess path="/form/success" />
-						{/* <ApiTest path="/apitest" /> */}
 					</Router>
 				</div>
 				<Footer />

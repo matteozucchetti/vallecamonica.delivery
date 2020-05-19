@@ -1,8 +1,12 @@
 
 import { Component, Fragment } from 'preact';
-import { Router } from 'preact-router';
+import { Router, route } from 'preact-router';
 import { Link } from 'preact-router/match';
+
 import axios from 'axios';
+import getFormData from '../utils/getFormData';
+
+import emailjs from 'emailjs-com';
 
 // Images
 import LeftArrow from '../assets/svg/left_arrow.svg';
@@ -13,40 +17,114 @@ import gtagEvent from '../utils/gtagEvents.js';
 
 export default class Form extends Component {
 
-   // state = {
-   //    actualJson: null,
-   //    loading: false
-   // };
+   state = {
+      loading: false
+   };
 
-   // componentDidMount() {
+   handleSubmit = (e) => {
 
-   //    const options = {
-   //       headers: { 'Authorization': 'token 5a4ba7aec1683be583bead6415e078f0b088911b' }
-   //    };
+      const form = document.getElementById('theForm');
 
-   // }
+      let isFormValid = form.checkValidity();
 
-   // handleSubmit = (e) => {
-   //    // e.preventDefault()
-   //    const form = document.getElementById('theForm');
-   //    let isValidForm = form.checkValidity();
-   //    isValidForm ? this.submitForm(e) : false
-   // }
+      if (isFormValid) {
+         this.submitForm(e)
+      }
+   }
 
-   // submitForm = (e) => {
-   //    // e.preventDefault()
-   //    // this.setState({ loading: true }, () => {
-   //    //    axios.get('https://api.github.com/gists/e890d1b86e83ab190d3b1273da857e67', {}, options)
-   //    //       .then((response) => {
-   //    //          let resp = Object.values(response.data.files)[0].content;
-   //    //          this.setState({ actualJson: resp, loading: false });
-   //    //       }, (error) => {
-   //    //          console.log(error);
-   //    //       });
-   //    // })
-   // }
+   createTheJson = (data) => {
+      let dataModel = {
+         "hidden": false,
+         "name": `${data.name ? data.name : ''}`,
+         "desc": "descrizione",
+         "tel": `${data.telephone ? data.telephone : ''}`,
+         "site": `//${data.site ? data.site : ''}`,
+         "mail": `${data.mail ? data.mail : ''}`,
+         "insta": `${data.instagram ? data.instagram : ''}`,
+         "facebook": `${data.facebook ? data.facebook : ''}`,
+         "menu_link": "",
+         "services": "",
+         "payments": "",
+         "note": `${data.note ? data.note : ''}`,
+         "where": `${data.delivery_city ? data.delivery_city : ''}`,
+         "when": {
+            "lun": `${data.delivery_day_Lun}` ? 1 : 0,
+            "mar": `${data.delivery_day_Mar}` ? 1 : 0,
+            "mer": `${data.delivery_day_Mer}` ? 1 : 0,
+            "gio": `${data.delivery_day_Gio}` ? 1 : 0,
+            "ven": `${data.delivery_day_Ven}` ? 1 : 0,
+            "sab": `${data.delivery_day_Sab}` ? 1 : 0,
+            "dom": `${data.delivery_day_Dom}` ? 1 : 0
+         },
+         "delivery_fee": `${data.delivery_fee ? data.delivery_fee : ''}`,
+         "min_order": `${data.min_order ? data.min_order : ''}`,
+         "post_covid": `${data.post_covid ? data.post_covid : ''}`
+      }
+      return dataModel
+   }
+
+   submitForm = (e) => {
+
+      e.preventDefault()
+
+      const form = document.getElementById('theForm');
+
+      const options = {
+         headers: { 'Authorization': `token ${process.env.PREACT_APP_GITHUB_TOKEN}` }
+      };
+
+      const content = {
+         "description": "vcd - created from form",
+         "public": false,
+         "files": {
+            "vallecamonicadelivery - new.json": {
+               "content": JSON.stringify(this.createTheJson(getFormData(form)))
+            }
+         }
+      }
+
+      this.setState({ loading: true }, () => {
+
+         axios.post('https://api.github.com/gists', content, options)
+            .then((response) => {
+               this.setState({ loading: false, gistUrl: response.data.html_url })
+               route('/form/success', true)
+
+               const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
+               const receiverEmail = process.env.REACT_APP_EMAILJS_MAIL
+               const text = response.data.html_url
+
+               emailjs.send(
+                  'default_service',
+                  'default',
+                  {
+                     senderEmail,
+                     receiverEmail,
+                     text
+                  }
+               ).then((response) => {
+
+               }, (error) => {
+                  console.log(error);
+               });
+
+
+            }, (error) => {
+               console.log(error);
+            });
+
+      })
+
+   }
+
+   componentDidMount() {
+      emailjs.init("user_Sq1NBQoFmMeeCpFtERAIb");
+   }
 
    render() {
+
+      const { loading } = this.state;
+
       return (
          <Fragment>
             <div class="max-w-screen-lg mx-auto px-5">
@@ -57,10 +135,9 @@ export default class Form extends Component {
                   <span class="bg-white inline-block relative z-10 px-10 uppercase">AGGIUNGI LA TUA ATTIVITÀ</span>
                </h2>
                <p class="mb-5 text-center"><b>Compila il form</b> qui sotto per <b>inviare la richiesta</b> e aggiungere la tua attività</p>
-               <form class="mt-10" name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/form/success/" id="theForm">
+               <form class="mt-10" name="contact" method="post" id="theForm">
 
                   <input type="hidden" aria-hidden="true" name="form-name" value="contact" />
-                  <input type="hidden" aria-hidden="true" name="bot-field" />
 
 
                   <div class="flex flex-wrap">
@@ -219,7 +296,7 @@ export default class Form extends Component {
                   <div class="flex flex-wrap">
 
                      <div class="w-full text-center px-2 mb-10">
-                        <button class="vcd-button w-full text-center md:w-auto" type="submit">invia richiesta</button>
+                        <button class="vcd-button w-full text-center md:w-auto" type="submit" onClick={(e) => this.handleSubmit(e)}>{loading ? <span>loading...</span> : <span>invia la richiesta</span>}</button>
                      </div>
 
                   </div>
