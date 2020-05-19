@@ -48,13 +48,13 @@ export default class Form extends Component {
          "note": `${data.note ? data.note : ''}`,
          "where": `${data.delivery_city ? data.delivery_city : ''}`,
          "when": {
-            "lun": `${data.delivery_day_Lun}` ? 1 : 0,
-            "mar": `${data.delivery_day_Mar}` ? 1 : 0,
-            "mer": `${data.delivery_day_Mer}` ? 1 : 0,
-            "gio": `${data.delivery_day_Gio}` ? 1 : 0,
-            "ven": `${data.delivery_day_Ven}` ? 1 : 0,
-            "sab": `${data.delivery_day_Sab}` ? 1 : 0,
-            "dom": `${data.delivery_day_Dom}` ? 1 : 0
+            "lun": `${data.delivery_day_Lun}` === 'undefined' ? 0 : 1,
+            "mar": `${data.delivery_day_Mar}` === 'undefined' ? 0 : 1,
+            "mer": `${data.delivery_day_Mer}` === 'undefined' ? 0 : 1,
+            "gio": `${data.delivery_day_Gio}` === 'undefined' ? 0 : 1,
+            "ven": `${data.delivery_day_Ven}` === 'undefined' ? 0 : 1,
+            "sab": `${data.delivery_day_Sab}` === 'undefined' ? 0 : 1,
+            "dom": `${data.delivery_day_Dom}` === 'undefined' ? 0 : 1
          },
          "delivery_fee": `${data.delivery_fee ? data.delivery_fee : ''}`,
          "min_order": `${data.min_order ? data.min_order : ''}`,
@@ -83,35 +83,39 @@ export default class Form extends Component {
          }
       }
 
+      console.log(this.createTheJson(getFormData(form)))
+
       this.setState({ loading: true }, () => {
 
-         axios.post('https://api.github.com/gists', content, options)
-            .then((response) => {
-               this.setState({ loading: false, gistUrl: response.data.html_url })
-               route('/form/success', true)
+         
 
-               const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
-               const receiverEmail = process.env.REACT_APP_EMAILJS_MAIL
-               const text = response.data.html_url
+         // axios.post('https://api.github.com/gists', content, options)
+         //    .then((response) => {
+         //       this.setState({ loading: false, gistUrl: response.data.html_url })
+         //       route('/form/success', true)
 
-               emailjs.send(
-                  'default_service',
-                  'default',
-                  {
-                     senderEmail,
-                     receiverEmail,
-                     text
-                  }
-               ).then((response) => {
+         //       const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
+         //       const receiverEmail = process.env.REACT_APP_EMAILJS_MAIL
+         //       const text = response.data.html_url
 
-               }, (error) => {
-                  console.log(error);
-               });
+         //       emailjs.send(
+         //          'default_service',
+         //          'default',
+         //          {
+         //             senderEmail,
+         //             receiverEmail,
+         //             text
+         //          }
+         //       ).then((response) => {
+
+         //       }, (error) => {
+         //          console.log(error);
+         //       });
 
 
-            }, (error) => {
-               console.log(error);
-            });
+         //    }, (error) => {
+         //       console.log(error);
+         //    });
 
       })
 
