@@ -83,39 +83,35 @@ export default class Form extends Component {
          }
       }
 
-      console.log(this.createTheJson(getFormData(form)))
-
       this.setState({ loading: true }, () => {
 
-         
+         axios.post('https://api.github.com/gists', content, options)
+            .then((response) => {
+               this.setState({ loading: false, gistUrl: response.data.html_url })
+               route('/form/success', true)
 
-         // axios.post('https://api.github.com/gists', content, options)
-         //    .then((response) => {
-         //       this.setState({ loading: false, gistUrl: response.data.html_url })
-         //       route('/form/success', true)
+               const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
+               const receiverEmail = process.env.REACT_APP_EMAILJS_MAIL
+               const text = response.data.html_url
 
-         //       const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
-         //       const receiverEmail = process.env.REACT_APP_EMAILJS_MAIL
-         //       const text = response.data.html_url
+               emailjs.send(
+                  'default_service',
+                  'default',
+                  {
+                     senderEmail,
+                     receiverEmail,
+                     text
+                  }
+               ).then((response) => {
 
-         //       emailjs.send(
-         //          'default_service',
-         //          'default',
-         //          {
-         //             senderEmail,
-         //             receiverEmail,
-         //             text
-         //          }
-         //       ).then((response) => {
-
-         //       }, (error) => {
-         //          console.log(error);
-         //       });
+               }, (error) => {
+                  console.log(error);
+               });
 
 
-         //    }, (error) => {
-         //       console.log(error);
-         //    });
+            }, (error) => {
+               console.log(error);
+            });
 
       })
 
