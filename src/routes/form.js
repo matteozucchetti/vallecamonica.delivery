@@ -118,7 +118,7 @@ export default class Form extends Component {
    }
 
    componentDidMount() {
-      emailjs.init("user_Sq1NBQoFmMeeCpFtERAIb");
+      emailjs.init(process.env.PREACT_APP_EMAILJS_USERID);
    }
 
    render() {
