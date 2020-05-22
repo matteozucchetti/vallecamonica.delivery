@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 /build
 /*.log
+/src/firebse.js
 .env
 size-plugin.json
 data

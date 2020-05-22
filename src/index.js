@@ -24,10 +24,9 @@ export const Action = createContext({})
 export default class App extends Component {
 
 	state = {
-		results: {},
 		isHomepage: true,
 		isPopupOpen: false,
-		popupData: {},
+		popupData: {}
 	}
 
 	targetElement = null;
@@ -60,14 +59,6 @@ export default class App extends Component {
 
 		this.targetElement = document.querySelector('#popupDialog');
 
-		fetch(`${process.env.PREACT_APP_DATA_SOURCE}?c=${Math.random().toString(36).split('.')[1]}`)
-			.then(r => r.json())
-			.then(json => {
-				this.setState({
-					results: json,
-					resultBkp: json
-				});
-			});
 	}
 
 	componentDidUpdate() {
@@ -79,7 +70,8 @@ export default class App extends Component {
 		clearAllBodyScrollLocks();
 	}
 
-	render(props, { isHomepage, results, popupData, isPopupOpen }) {
+	render(props, { isHomepage, popupData, isPopupOpen }) {
+
 		return (
 			<Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
 				<Header />
@@ -88,7 +80,7 @@ export default class App extends Component {
 						<Link href="/"><VcdLogo class="w-4/6 md:w-1/2 mx-auto my-10 main-logo" /></Link>
 					</div>
 					<Router onChange={this.handleRoute}>
-						<Home path="/" results={results} />
+						<Home path="/" />
 						<Form path="/form" />
 						<FormSuccess path="/form/success" />
 					</Router>
