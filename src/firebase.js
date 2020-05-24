@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import 'firebase/auth';
 import "firebase/database";
 const firebaseConfig = {
    apiKey: "AIzaSyAUcoVkVJiO6kwqSD6SRoUhAfYVEYrA_9c",
@@ -11,3 +12,12 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 export default firebase;
+
+export const database = firebase.database();
+export const auth = firebase.auth();
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export const deleteStore = (itemId) => {
+   const itemRef = firebase.database().ref(`/listing/${itemId}`);
+   itemRef.remove();
+}

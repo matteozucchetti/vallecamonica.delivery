@@ -1,7 +1,13 @@
 import { useContext } from 'preact/hooks';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 // Actions
 import { Action } from '../index';
+
+import {
+   deleteStore
+} from '../firebase.js';
 
 // gtag
 import gtagEvent from '../utils/gtagEvents.js';
@@ -11,10 +17,11 @@ import IconInfo from '../assets/svg/icon_info.svg';
 import IconTel from '../assets/svg/icon_tel.svg';
 
 export const ListItem = (props) => {
-   const { name, desc, tel, site, mail, payments, services, note, where, when } = props;
+   const { name, desc, tel, site, mail, payments, services, note, where, when, admin, id } = props;
+   
 
    const action = useContext(Action);
-   const isInfoVisible = Boolean(Array.isArray(tel) || site || mail || payments || services || note || Array.isArray(where));
+   const isInfoVisible = Boolean(tel || site || mail || payments || services || note || where);
 
    const getDay = () => {
       let d = new Date();
@@ -37,6 +44,31 @@ export const ListItem = (props) => {
       return Boolean(when[today])
    }
 
+   const handleDelete = (id) => {
+
+      confirmAlert({
+         customUI: ({ onClose }) => {
+            let itemId = id;
+            return (
+               <div className='custom-ui'>
+                  <h1>Are you sure?</h1>
+                  <p>You want to delete this file?</p>
+                  <button onClick={onClose}>No</button>
+                  <button
+                     onClick={() => {
+                        deleteStore(itemId)
+                        onClose();
+                     }}
+                  >
+                     Yes, Delete it!
+        </button>
+               </div>
+            );
+         }
+      });
+
+   }
+
    return (
       <article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${isOpenToday() ? "" : "closed-today"}`}>
 
@@ -55,7 +87,7 @@ export const ListItem = (props) => {
             </div>
          }
 
-         {tel && (
+         {tel && !admin && (
             <div class="vdc-infoButtons vdc-infoButtons--tel">
                <a href={`tel:${tel}`} onClick={
                   (e) => { gtagEvent('custom_click', 'listing - tel icon', name), tel.length > 1 && action.setPopupNumbers(e, props) }
@@ -68,6 +100,16 @@ export const ListItem = (props) => {
                </a>
             </div>
          )}
+
+         {admin &&
+            <div onClick={() => {handleDelete(id)}} class="vdc-infoButtons vdc-infoButtons--info">
+               <span
+                  role="img"
+                  aria-label="delete item"
+               ><IconInfo width="100%" fill="red" />
+               </span>
+            </div>
+         }
 
       </article>
    );

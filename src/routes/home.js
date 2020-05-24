@@ -2,7 +2,10 @@ import { Component, Fragment } from 'preact';
 import { Router } from 'preact-router';
 import { Link } from 'preact-router/match';
 import Scrollchor from "preact-scrollchor";
-import firebase from '../firebase.js';
+import {
+   auth,
+   database
+} from '../firebase.js';
 
 import { ListCategory } from '../components/listCategory';
 
@@ -37,21 +40,45 @@ export default class Home extends Component {
       gtagEvent('custom_click', 'home', 'click on category filter ' + key)
    };
 
+   groupBy = (xs, key) => {
+      return xs.reduce(function (rv, x) {
+         (rv[x[key]] = rv[x[key]] || []).push(x);
+         return rv;
+      }, {});
+   };
+
+   groupedByCategories() {
+      const stores = this.state.stores;
+      let groupBy = function (xs, key) {
+         return xs.reduce(function (rv, x) {
+            (rv[x[key]] = rv[x[key]] || []).push(x);
+            return rv;
+         }, {});
+      };
+      return this.groupBy(stores, 'category')
+   }
+
    filteredCategories(nameFilter, categoryFilter) {
       const stores = this.state.stores;
       const regexStore = new RegExp(`${nameFilter}`, 'i');
       const regexCategory = new RegExp(`[${nameFilter}]{${nameFilter.length},}`, 'i');
 
-      return Object.values(stores)
+      let filtered = Object.values(stores)
          .filter(store => (categoryFilter ? categoryFilter === store.category : true))
          .filter(store => nameFilter.length ? regexStore.test(store.where) || regexStore.test(store.name) || regexCategory.test(store.category) : true)
          .filter(store => store.hidden != true)
          .filter(store => store.category != 'pending')
+
+      return this.groupBy(filtered, 'category')
+
+
    }
 
    isEmptySearch(filteredStores) {
       let storesFound = 0;
-      storesFound += filteredStores.length;
+      for (let key in filteredStores) {
+         storesFound += filteredStores[key].length;
+      }
       return storesFound === 0;
    }
 
@@ -70,22 +97,13 @@ export default class Home extends Component {
 
       this.targetElement = document.querySelector('#popupDialog');
 
-      const listingRef = firebase.database().ref('listing')
+      const listingRef = database.ref('listing')
       this.setState({ loading: true }, () => {
-
-         // listingRef.on('value', (snapshot) => {
-         //    let json = snapshot.val();
-         //    this.setState({
-         //       stores: json,
-         //       loading: false
-         //    });
-         // });
 
          listingRef.on('value', (snapshot) => {
             let items = snapshot.val();
             let newState = [];
             for (let item in items) {
-               // console.log(...item)
                newState.push({
                   id: item,
                   category: items[item].category,
@@ -128,6 +146,7 @@ export default class Home extends Component {
    render(props, { nameFilter, categoryFilter }) {
 
       const { stores, loading } = this.state;
+      const groupedByCategories = this.groupedByCategories();
       const filteredStores = this.filteredCategories(nameFilter, categoryFilter)
       const isEmptySearch = this.isEmptySearch(filteredStores);
 
@@ -175,22 +194,22 @@ export default class Home extends Component {
                   <p class="text-white mb-4">Filtra per categoria</p>
                   <div class="flex overflow-x-scroll md:overflow-x-visible md:flex-wrap md:justify-center">
 
-                     {stores
-                     .filter(store => store.category != 'pending')
-                     .map(item => {
-                        return (
-                           <button
-                              onClick={this.handleCategoryFilter(item.category)}
-                              class={`vcd-category-button mx-2 mb-2 flex-grow-0 flex-shrink-0 ${
-                                 item.category === categoryFilter
-                                    ? "vcd-category-button--pressed"
-                                    : ""
-                                 }`}
-                           >
-                              <span>{item.category}</span>
-                           </button>
-                        )
-                     })}
+                     {Object.keys(groupedByCategories)
+                        .filter(item => item != 'pending')
+                        .map(item => {
+                           return (
+                              <button
+                                 onClick={this.handleCategoryFilter(item)}
+                                 class={`vcd-category-button mx-2 mb-2 flex-grow-0 flex-shrink-0 ${
+                                    item === categoryFilter
+                                       ? "vcd-category-button--pressed"
+                                       : ""
+                                    }`}
+                              >
+                                 <span>{item}</span>
+                              </button>
+                           )
+                        })}
 
                   </div>
                </div>
@@ -198,21 +217,31 @@ export default class Home extends Component {
 
             <div class="max-w-screen-lg mx-auto mt-10 px-2 md:px-5" id="listing-component">
 
-               {filteredStores
+               {Object.keys(filteredStores).map(item => {
+                  return (
+                     <ListCategory
+                        name={item}
+                        stores={filteredStores[item]}
+                        admin={false}
+                     />
+                  )
+               })}
+               {/* {filteredStores
                   .map((item) => {
                      return (
                         <ListCategory
-                           name={item.category}
+                           name={item}
                            stores={filteredStores}
+                           admin='false'
                         />
                      )
                   })
-               }
+               } */}
                {isEmptySearch && !loading && (
                   <span class="my-5 block">Oops! Non abbiamo trovato risultati corrispondenti alla tua ricerca.</span>
                )}
                {loading && (
-                  <span class="my-5 block">Caricamento...</span>
+                  <span class="my-5 block">Loading...</span>
                )}
 
             </div>

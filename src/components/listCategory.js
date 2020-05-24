@@ -1,7 +1,6 @@
 import { ListItem } from './lisItem';
 
-export const ListCategory = ({ name = '', stores = {} }) => {
-	
+export const ListCategory = ({ name = '', stores = {}, admin }) => {
 	return (
 		<section id={name.replace(' ', '_')} className="">
 			<h2 className="text-center font-semibold category-heading my-10">
@@ -12,7 +11,7 @@ export const ListCategory = ({ name = '', stores = {} }) => {
 					stores
 					.filter(store => (name === store.category))
 					.map(props => (
-						(!props.hidden && <ListItem key={props.tel} {...props} />)
+						(!props.hidden && <ListItem key={props.id} admin={admin} {...props} />)
 					))
 				}
 			</div>

@@ -2,7 +2,10 @@
 import { Component, Fragment } from 'preact';
 import { Router, route } from 'preact-router';
 import { Link } from 'preact-router/match';
-import firebase from '../firebase.js';
+import {
+   auth,
+   database
+} from '../firebase.js';
 
 // import axios from 'axios';
 
@@ -22,7 +25,7 @@ export default class Form extends Component {
       this.state = {
          loading: false,
          store: {
-            "hidden": true,
+            "hidden": false,
             "name": '',
             "category": "pending",
             "desc": null,
@@ -88,52 +91,20 @@ export default class Form extends Component {
       }
    }
 
-   // createTheJson = (data) => {
-   //    let dataModel = {
-   //       "hidden": false,
-   //       "name": `${data.name ? data.name : ''}`,
-   //       "desc": "descrizione",
-   //       "tel": `${data.telephone ? data.telephone : ''}`,
-   //       "site": `//${data.site ? data.site : ''}`,
-   //       "mail": `${data.mail ? data.mail : ''}`,
-   //       "insta": `${data.instagram ? data.instagram : ''}`,
-   //       "facebook": `${data.facebook ? data.facebook : ''}`,
-   //       "menu_link": "",
-   //       "services": "",
-   //       "payments": "",
-   //       "note": `${data.note ? data.note : ''}`,
-   //       "where": `${data.delivery_city ? data.delivery_city : ''}`,
-   //       "when": {
-   //          "lun": `${data.delivery_day_Lun}` === 'undefined' ? 0 : 1,
-   //          "mar": `${data.delivery_day_Mar}` === 'undefined' ? 0 : 1,
-   //          "mer": `${data.delivery_day_Mer}` === 'undefined' ? 0 : 1,
-   //          "gio": `${data.delivery_day_Gio}` === 'undefined' ? 0 : 1,
-   //          "ven": `${data.delivery_day_Ven}` === 'undefined' ? 0 : 1,
-   //          "sab": `${data.delivery_day_Sab}` === 'undefined' ? 0 : 1,
-   //          "dom": `${data.delivery_day_Dom}` === 'undefined' ? 0 : 1
-   //       },
-   //       "delivery_fee": `${data.delivery_fee ? data.delivery_fee : ''}`,
-   //       "min_order": `${data.min_order ? data.min_order : ''}`,
-   //       "post_covid": `${data.post_covid ? data.post_covid : ''}`
-   //    }
-   //    return dataModel
-   // }
-
    submitForm = (e) => {
 
       e.preventDefault()
 
       this.setState({ loading: true }, () => {
 
-         const listingRef = firebase.database().ref('listing')
+         const listingRef = database.ref('listing')
          const store = this.state.store;
-         console.log(store)
          listingRef.push(store);
          setTimeout(() => {
             this.setState({
                loading: false,
                store: {
-                  "hidden": true,
+                  "hidden": false,
                   "name": '',
                   "category":"pending",
                   "desc": null,
@@ -161,6 +132,7 @@ export default class Form extends Component {
                   "post_covid": ''
                }
             })
+            route('/form/success', true)
          }, 1000)
 
       })
@@ -392,7 +364,7 @@ export default class Form extends Component {
                   <div class="flex flex-wrap">
 
                      <div class="w-full text-center px-2 mb-10">
-                        <button class="vcd-button w-full text-center md:w-auto" type="submit">{loading ? <span>loading...</span> : <span>invia la richiesta</span>}</button>
+                        <button class="vcd-button w-full text-center md:w-auto" type="submit">{loading ? <span>Loading...</span> : <span>invia la richiesta</span>}</button>
                      </div>
 
                   </div>
