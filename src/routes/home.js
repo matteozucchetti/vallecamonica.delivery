@@ -99,14 +99,14 @@ export default class Home extends Component {
               <button
                 onClick={() => { gtagEvent('custom_click','home','click on cerca - scroll down') }}
                 class="vcd-button w-full text-center md:w-auto">
-                cerca nella tua zona
+                Cerca nella tua zona
               </button>
             </Scrollchor>
             <Link href="/form">
               <button 
                 onClick={() => { gtagEvent('custom_click','home','click on aggiungi attività') }}
                 class="vcd-button vcd-button--rosa w-full text-center md:w-auto">
-                aggiungi un'attività
+                Aggiungi un'attività
               </button>
             </Link>
           </div>
@@ -174,7 +174,7 @@ export default class Home extends Component {
             <InstaBadge />
             <p class="text-xl md:text-2xl font-thin my-5">@vallecamonica_delivery</p>
             <p class="font-thin mb-5">Seguici su Instagram<br />per rimanere sempre aggiornato sulle ultime novità</p>
-            <button class="vcd-button w-full text-center md:w-auto">seguici</button>
+            <button class="vcd-button w-full text-center md:w-auto">Seguici</button>
           </a>
           <Deco className="hidden lg:block deco deco--left" />
           <Deco className="hidden lg:block deco deco--right" />
