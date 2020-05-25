@@ -15,6 +15,9 @@ import gtagEvent from '../utils/gtagEvents.js';
 // scrollTo
 import scrollTo from '../utils/scrollTo.js';
 
+// Date
+import getCurrentDate from '../utils/getCurrentDate.js'
+
 export default class Home extends Component {
 	state = {
 		filter: '',
@@ -158,6 +161,9 @@ export default class Home extends Component {
                   />
                 ))
             }
+            {!isEmptySearch && (
+               <span class="my-10 block text-xs">{`Elenco aggiornato al ${getCurrentDate('/')}`}</span>
+            )}
             {isEmptySearch && (
               <span class="my-5 block">Oops! Non abbiamo trovato risultati corrispondenti alla tua ricerca.</span>
             )}
