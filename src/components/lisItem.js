@@ -1,6 +1,6 @@
 import { useContext } from 'preact/hooks';
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import 'react-confirm-alert/src/react-confirm-alert.css'; //todo
 
 // Actions
 import { Action } from '../index';
@@ -15,6 +15,7 @@ import gtagEvent from '../utils/gtagEvents.js';
 // Images
 import IconInfo from '../assets/svg/icon_info.svg';
 import IconTel from '../assets/svg/icon_tel.svg';
+import CloseIcon from '../assets/svg/icon_close.svg';
 
 export const ListItem = (props) => {
    const { name, desc, tel, site, mail, payments, services, note, where, when, admin, id } = props;
@@ -72,13 +73,13 @@ export const ListItem = (props) => {
    return (
       <article class={`relative cursor-pointer flex justify-center items-stretch w-full my-5 ${isOpenToday() ? "" : "closed-today"}`}>
 
-         <div onClick={(e) => { gtagEvent('custom_click', 'listing - shop name', name), action.setPopupNumbers(e, props) }} class="flex flex-auto justify-center items-start flex-col border border-vcd-black rounded px-2 py-2 md:p-2">
+         <div onClick={(e) => { gtagEvent('custom_click', 'listing - shop name', name), action.setAdminPopupNumbers(e, props) }} class="flex flex-auto justify-center items-start flex-col border border-vcd-black rounded px-2 py-2 md:p-2">
             <span class="text-sm md:text-base font-semibold">{name}</span>
             <span class="text-xs leading-none">{desc}</span>
          </div>
 
          {isInfoVisible &&
-            <div onClick={(e) => { gtagEvent('custom_click', 'listing - info icon', name), action.setPopupNumbers(e, props) }} class="vdc-infoButtons vdc-infoButtons--info">
+            <div onClick={(e) => { gtagEvent('custom_click', 'listing - info icon', name), action.setAdminPopupNumbers(e, props) }} class="vdc-infoButtons vdc-infoButtons--info">
                <span
                   role="img"
                   aria-label="more info"
@@ -90,7 +91,7 @@ export const ListItem = (props) => {
          {tel && !admin && (
             <div class="vdc-infoButtons vdc-infoButtons--tel">
                <a href={`tel:${tel}`} onClick={
-                  (e) => { gtagEvent('custom_click', 'listing - tel icon', name), tel.length > 1 && action.setPopupNumbers(e, props) }
+                  (e) => { gtagEvent('custom_click', 'listing - tel icon', name), tel.length > 1 && action.setAdminPopupNumbers(e, props) }
                }>
                   <span
                      role="img"
@@ -102,11 +103,11 @@ export const ListItem = (props) => {
          )}
 
          {admin &&
-            <div onClick={() => {handleDelete(id)}} class="vdc-infoButtons vdc-infoButtons--info">
+            <div onClick={() => {handleDelete(id)}} class="vdc-infoButtons vdc-infoButtons--tel">
                <span
                   role="img"
                   aria-label="delete item"
-               ><IconInfo width="100%" fill="red" />
+            ><CloseIcon width="100%" />
                </span>
             </div>
          }

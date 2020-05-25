@@ -15,6 +15,7 @@ import Admin from './routes/admin';
 import Header from './components/header';
 import Footer from './components/footer';
 import { Dialog } from './components/dialog';
+import AdminDialog from './components/adminDialog';
 import { PWAPrompt } from './components/pwaPrompt';
 
 // Images
@@ -27,7 +28,9 @@ export default class App extends Component {
 	state = {
 		isHomepage: true,
 		isPopupOpen: false,
-		popupData: {}
+		isAdminPopupOpen: false,
+		popupData: {},
+		adminPopupData: {}
 	}
 
 	targetElement = null;
@@ -46,14 +49,23 @@ export default class App extends Component {
 		})
 	}
 
+	setAdminPopupNumbers = (e, adminPopupData) => {
+		e.preventDefault();
+
+		this.setState({
+			adminPopupData,
+			isAdminPopupOpen: true
+		})
+	}
+
 	closePopup = (e) => {
 		if (e.currentTarget === e.target) {
-			this.setState({ isPopupOpen: false })
+			this.setState({ isPopupOpen: false, isAdminPopupOpen: false })
 		}
 	}
 
 	closePopupFromButton = (e) => {
-		this.setState({ isPopupOpen: false })
+		this.setState({ isPopupOpen: false, isAdminPopupOpen: false })
 	}
 
 	componentDidMount() {
@@ -71,10 +83,10 @@ export default class App extends Component {
 		clearAllBodyScrollLocks();
 	}
 
-	render(props, { isHomepage, popupData, isPopupOpen }) {
+	render(props, { isHomepage, popupData, isPopupOpen, adminPopupData, isAdminPopupOpen }) {
 
 		return (
-			<Action.Provider value={{ setPopupNumbers: this.setPopupNumbers }}>
+			<Action.Provider value={{ setPopupNumbers: this.setPopupNumbers, setAdminPopupNumbers: this.setAdminPopupNumbers }}>
 				<Header />
 				<div id="app" class="relative">
 					<div class="max-w-screen-lg mx-auto">
@@ -89,6 +101,7 @@ export default class App extends Component {
 				</div>
 				<Footer />
 				<Dialog isOpen={isPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...popupData} />
+				<AdminDialog isOpen={isAdminPopupOpen} closePopup={this.closePopup} closePopupFromButton={this.closePopupFromButton} {...adminPopupData} />
 				<PWAPrompt />
 			</Action.Provider>
 		);
