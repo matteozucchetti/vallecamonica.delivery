@@ -44,6 +44,13 @@ input{
       @apply border-b-2 border-t-2 border-vcd-rosa;
     }
   }
+  &--arancione {
+     @apply bg-vcd-arancione text-white py-3 px-10 border-b-4 border-vcd-arancione-scuro rounded;
+
+     &:hover {
+        @apply border-b-2 border-t-2 border-vcd-arancione;
+     }
+  }
   &--white{
     @apply bg-white text-vcd-azzurro py-3 px-10 border-b-4 border-vcd-azzurro rounded;
     &:hover{

@@ -12,6 +12,7 @@ module.exports = {
       'vcd-azzurro': '#61bfbc',
       'vcd-azzurro-scuro': '#429a96',
       'vcd-arancione': '#F2923E',
+      'vcd-arancione-scuro': '#c4663f',
       'vcd-rosa': '#EC6680',
       'vcd-rosso': '#E83261',
       'vcd-black': '#535353'
