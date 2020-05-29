@@ -137,6 +137,7 @@ export default class Form extends Component {
                   <span class="bg-white inline-block relative z-10 px-10 uppercase">AGGIUNGI LA TUA ATTIVITÀ</span>
                </h2>
                <p class="mb-5 text-center"><b>Compila il form</b> qui sotto per <b>inviare la richiesta</b> e aggiungere la tua attività</p>
+               <p class="mb-5 text-center">Hai un <b>menu/listino</b>? Ricorda di inviarcelo a <a class="underline" target="_blank" href="mailto:info@vallecamonica.delivery?subject=menu/listino&body=In allegato il menu/listino da inserire nell'app">info@vallecamonica.delivery</a> e lo pubblicheremo tra le informazioni della tua attività in modo che sia consultabile direttamente dell'app!</p>
                <form class="mt-10" name="contact" method="post" id="theForm">
 
                   <input type="hidden" aria-hidden="true" name="form-name" value="contact" />
