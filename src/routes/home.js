@@ -8,7 +8,7 @@ import { ListCategory } from '../components/listCategory';
 // Images
 import InstaBadge from '../assets/svg/insta_profile.svg';
 import Deco from '../assets/svg/decoration.svg';
-import LeftArrow from '../assets/svg/left_arrow.svg';
+import SaveIcon from '../assets/svg/save.svg';
 
 // gtag
 import gtagEvent from '../utils/gtagEvents.js';
@@ -116,18 +116,24 @@ export default class Home extends Component {
                   </Link>
                </div>
 
-
+               <div class="flex flex-wrap justify-center items-center">
+                  <Link href="/salvawebapp">
+                     <button
+                        onClick={() => { gtagEvent('custom_click', 'home', 'click on salva web app') }}
+                        class="cd-button vcd-button--transparent w-full text-center text-vcd-arancione md:w-auto">
+                        <SaveIcon class="save-icon" /> Salva la web app
+              </button>
+                  </Link>
+               </div>
 
             </div>
 
             <div class="bg-vcd-arancione mt-10 py-10 w-full relative" id="search-component">
 
-               <Link onClick={() => { gtagEvent('custom_click', 'home', 'click on salva web app') }} class="text-vcd-arancione text-xs md:text-sm pb-1 md:pr-2 save-web-app" href="/salvawebapp"><LeftArrow />Salva <b>vallecamonica.delivery</b> nella home!</Link>
-
                <div class="max-w-screen-lg mx-auto text-center px-5">
                   <p class="text-white mb-4">Inserisci il nome del paese o dell'attività che stai cercando</p>
                   <input
-                     class="bg-white py-3 px-4 w-full appearance-none leading-normal text-center rounded text-lg font-semibold focus:outline-none mb-8"
+                     class="bg-white py-3 px-4 w-full max-w-screen-lg appearance-none leading-normal text-center rounded text-lg font-semibold focus:outline-none mb-8"
                      id="search-input"
                      type="text"
                      placeholder="es. Edolo, Syesta, Nami Sushi"
