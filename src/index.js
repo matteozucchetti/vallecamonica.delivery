@@ -9,7 +9,8 @@ import './assets/styles/global.css';
 import Home from './routes/home';
 import Form from './routes/form';
 import FormSuccess from './routes/formSuccess';
-import StorePage from './routes/storePage';
+import SalvaWebApp from './routes/salvawebapp';
+// import StorePage from './routes/storePage';
 
 // Components
 import Header from './components/header';
@@ -92,7 +93,8 @@ export default class App extends Component {
 						<Home path="/" results={results} />
 						<Form path="/form" />
 						<FormSuccess path="/form/success" />
-						<StorePage path="/my/:id" results={results} />
+						<SalvaWebApp path="/salvawebapp" />
+						{/* <StorePage path="/my/:id" results={results} /> */}
 					</Router>
 				</div>
 				<Footer />

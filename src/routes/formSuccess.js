@@ -10,7 +10,7 @@ import gtagEvent from '../utils/gtagEvents.js';
 export default function FormSuccess() {
 	return (
     <Fragment>
-  		<div class="text-center max-w-screen-sm mx-auto relative pb-10  px-5">
+  		<div class="text-center max-w-screen-sm mx-auto relative pb-10 px-5">
 
         <h2 className="text-center font-light text-vcd-rosa tracking-wide my-5 md:my-10">
           <span class="bg-white inline-block relative z-10 px-10 uppercase">grazie per aver aggiunto la tua attività</span>

@@ -8,6 +8,7 @@ import { ListCategory } from '../components/listCategory';
 // Images
 import InstaBadge from '../assets/svg/insta_profile.svg';
 import Deco from '../assets/svg/decoration.svg';
+import LeftArrow from '../assets/svg/left_arrow.svg';
 
 // gtag
 import gtagEvent from '../utils/gtagEvents.js';
@@ -119,7 +120,10 @@ export default class Home extends Component {
 
             </div>
 
-            <div class="bg-vcd-arancione mt-10 py-10 w-full" id="search-component">
+            <div class="bg-vcd-arancione mt-10 py-10 w-full relative" id="search-component">
+
+               <Link onClick={() => { gtagEvent('custom_click', 'home', 'click on salva web app') }} class="text-vcd-arancione text-xs md:text-sm pb-1 md:pr-2 save-web-app" href="/salvawebapp"><LeftArrow />Salva <b>vallecamonica.delivery</b> nella home!</Link>
+
                <div class="max-w-screen-lg mx-auto text-center px-5">
                   <p class="text-white mb-4">Inserisci il nome del paese o dell'attività che stai cercando</p>
                   <input
