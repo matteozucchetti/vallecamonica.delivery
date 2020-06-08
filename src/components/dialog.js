@@ -31,9 +31,12 @@ export const Dialog = ({
    delivery_fee,
    insta,
    facebook,
-   menu_link
+   menu_link,
+   city = String(desc).substr(0, String(desc).indexOf('-'))
 }) => {
+
    return (
+
       <dialog
          class="fixed inset-x-0 top-0 backdrop w-screen h-screen z-20 vcdDialog overflow-y-scroll overflow-x-hidden"
          style={{ display: isOpen ? "initial" : "none" }}
@@ -46,11 +49,13 @@ export const Dialog = ({
             <div class="flex justify-start md:justify-center items-center bg-vcd-azzurro p-3 md:p-6 relative">
 
                <div class="md:text-center w-full md:w-auto">
-                  <h2 class="text-2xl font-bold text-white pr-10 md:pr-0 leading-tight">{name}</h2>
-                  <p class="text-white text-xs pr-10 md:pr-0">
-                     <PinIcon class="inline-block" width="20" height="20" style="margin-top:-5px;" />
-                     {desc}
-                  </p>
+                  <a href={`http://www.google.com/search?q=${name} ${city}`} target="_blank">
+                     <h2 class="text-2xl font-bold text-white pr-10 md:pr-0 leading-tight">{name}</h2>
+                     <p class="text-white text-xs pr-10 md:pr-0">
+                           <PinIcon class="inline-block" width="20" height="20" style="margin-top:-5px;" />
+                        {desc}
+                     </p>
+                  </a>
                </div>
 
                <button
