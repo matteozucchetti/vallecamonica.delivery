@@ -33,7 +33,7 @@ export default class Footer extends Component {
           </form>
 
           <p class="mb-5 text-white">
-            Developed with <IconCuore class="icon-heart" /> by
+            <IconCuore class="icon-heart" /> creato da
             <a 
               class="font-semibold"
               onClick={() => { gtagEvent('custom_click','footer','click on matteo') }}
@@ -42,7 +42,7 @@ export default class Footer extends Component {
               rel="noreferrer"
               target="_blank"
             > {process.env.PREACT_APP_DEV_NAME}</a>
-            , design by 
+            ,  
             <a
               class="font-semibold"
               onClick={() => { gtagEvent('custom_click','footer','click on francesca') }}
@@ -50,11 +50,19 @@ export default class Footer extends Component {
               rel="noopener"
               rel="noreferrer"
               target="_blank"
-            > Francesca Da Forno</a>
-          </p>
-          <p class="mb-5 text-white">
-            Special thanks to <span class="font-semibold">Matteo Bernardi</span>
-          </p>
+            > Francesca Da Forno</a> e <span class="font-semibold">Matteo Bernardi</span>
+         </p>
+         <p class="mb-5 text-white">
+            In collaborazione con 
+            <a
+               class="font-semibold"
+               onClick={() => { gtagEvent('custom_click', 'footer', 'click on webcamvallecamonica') }}
+               href="https://webcamtonale.com/"
+               rel="noopener"
+               rel="noreferrer"
+               target="_blank"
+            > Webcam Vallecamonica</a>
+         </p>
           <a href="https://github.com/tomma5o/domicilioBoilerplate"
             target="_blank"
             rel="noopener noreferrer"
