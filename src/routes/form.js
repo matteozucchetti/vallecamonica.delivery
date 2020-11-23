@@ -110,6 +110,8 @@ export default class Form extends Component {
                   console.log(error);
                });
 
+               this.sendThankYouEmail()
+
 
             }, (error) => {
                console.log(error);
@@ -117,6 +119,27 @@ export default class Form extends Component {
 
       })
 
+   }
+
+   sendThankYouEmail () {
+
+      const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
+      const receiverEmail = 'zucchetti.matteo@mailnesia.com'
+      const name = 'name'
+
+      emailjs.send(
+         'default_service',
+         'template_0vHISSVg',
+         {
+            senderEmail,
+            receiverEmail,
+            name
+         }
+      ).then((response) => {
+         
+      }, (error) => {
+         console.log(error);
+      });
    }
 
    componentDidMount() {
@@ -299,6 +322,7 @@ export default class Form extends Component {
                   <div class="flex flex-wrap">
 
                      <div class="w-full text-center px-2 mb-10">
+                        {/* <button class="vcd-button w-full text-center md:w-auto" type="submit" onClick={(e) => this.handleSubmit(e)}>{loading ? <span>Loading...</span> : <span>Invia la richiesta</span>}</button> */}
                         <button class="vcd-button w-full text-center md:w-auto" type="submit" onClick={(e) => this.handleSubmit(e)}>{loading ? <span>Loading...</span> : <span>Invia la richiesta</span>}</button>
                      </div>
 
