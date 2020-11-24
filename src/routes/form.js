@@ -110,7 +110,7 @@ export default class Form extends Component {
                   console.log(error);
                });
 
-               this.sendThankYouEmail()
+               this.sendThankYouEmail(form)
 
 
             }, (error) => {
@@ -121,11 +121,11 @@ export default class Form extends Component {
 
    }
 
-   sendThankYouEmail () {
+   sendThankYouEmail (form) {
 
       const senderEmail = process.env.REACT_APP_EMAILJS_MAIL
-      const receiverEmail = 'zucchetti.matteo@mailnesia.com'
-      const name = 'name'
+      const receiverEmail = this.createTheJson(getFormData(form)).mail
+      const name = this.createTheJson(getFormData(form)).name
 
       emailjs.send(
          'default_service',
